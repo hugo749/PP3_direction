@@ -1,0 +1,194 @@
+﻿<Window x:Class="PP3_direction.directeur"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PP3_direction">
+
+    <Window.Resources>
+        <Storyboard x:Key="MenuOpen">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="60"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="200"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="MenuClose">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="GridMenu">
+                <EasingDoubleKeyFrame KeyTime="0" Value="200"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="60"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+
+
+
+
+
+
+
+    <Grid Background="LightGray" Name="Globale">
+        <Grid x:Name="GridMenu" Width="179" HorizontalAlignment="Left" Background="#FF112D8D" >
+            <StackPanel>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF4776F5">
+                    <ListViewItem Height="60" Selected="ListViewItem_Selected">
+                        <StackPanel Orientation="Horizontal">
+                            
+                            <TextBlock Text="Statistiques" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Selected="ListViewItem_Selected_1">
+                        <StackPanel Orientation="Horizontal">
+                            
+                            <TextBlock Text="Salles" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Selected="ListViewItem_Selected_2">
+                        <StackPanel Orientation="Horizontal">
+                            
+                            <TextBlock Text="Avis" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem Height="60" Selected="ListViewItem_Selected_3">
+                        <StackPanel Orientation="Horizontal">
+                            
+                            <TextBlock Text="Obstacles" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+
+                </ListView>
+            </StackPanel>
+        </Grid>
+
+
+        <Grid x:Name="grid1" HorizontalAlignment="Left" Height="452" Margin="179,0,0,0" VerticalAlignment="Top" Width="621"  Background="#FFD1D1D1">
+            <Label  Foreground="#FF2017D4" FontSize="30" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Height="63" Width="160">
+                <Bold>
+                    Statistique
+                </Bold>
+            </Label>
+            <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="364" Margin="10,78,0,0" Stroke="Black" VerticalAlignment="Top" Width="601" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
+            <Label  HorizontalAlignment="Center" Margin="32,65,357,0" VerticalAlignment="Top" Height="29" Width="232" FontSize="15" Background="#FFD1D1D1">
+                <Bold>Statistiques (salles, avis, clients)</Bold>
+            </Label>
+            <Image HorizontalAlignment="Left" Height="119" Margin="50,124,0,0" VerticalAlignment="Top" Width="131" Source="https://lbretagnett.com/wp-content/uploads/2017/10/t%C3%A9l%C3%A9chargement-2.jpg"/>
+            <Image HorizontalAlignment="Left" Height="119" Margin="314,124,0,0" VerticalAlignment="Top" Width="134" Source="https://lbretagnett.com/wp-content/uploads/2017/10/t%C3%A9l%C3%A9chargement-2.jpg"/>
+            <Image HorizontalAlignment="Left" Height="119" Margin="183,270,0,0" VerticalAlignment="Top" Width="131" Source="https://lbretagnett.com/wp-content/uploads/2017/10/t%C3%A9l%C3%A9chargement-2.jpg"/>
+            <Image HorizontalAlignment="Left" Height="119" Margin="450,270,0,0" VerticalAlignment="Top" Width="130" Source="https://lbretagnett.com/wp-content/uploads/2017/10/t%C3%A9l%C3%A9chargement-2.jpg"/>
+            <Label Content="Statistique" HorizontalAlignment="Left" Margin="93,270,0,0" VerticalAlignment="Top"/>
+            <Label Content="Statistique" HorizontalAlignment="Left" Margin="351,270,0,0" VerticalAlignment="Top"/>
+            <Label Content="Statistique" HorizontalAlignment="Left" Margin="217,406,0,0" VerticalAlignment="Top"/>
+            <Label Content="Statistique" HorizontalAlignment="Left" Margin="485,406,0,0" VerticalAlignment="Top"/>
+
+        </Grid>
+
+         <Grid x:Name="grid2"  HorizontalAlignment="Left" Height="452" Margin="179,0,0,0" VerticalAlignment="Top" Width="621"  Background="#FFD1D1D1">
+            <Label Foreground="#FF2017D4" FontSize="30" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Height="63" Width="145">
+                <Bold>Salles</Bold>
+            </Label>
+            <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="102" Margin="10,78,0,0" Stroke="Black" VerticalAlignment="Top" Width="601" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
+            <Button Canvas.ZIndex="8" BorderThickness="2,2,2,2" Content="Ajouter" Margin="481,90,33,0" VerticalAlignment="Top" Height="36" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
+            <Button Panel.ZIndex="100" BorderThickness="2,2,2,2" Content="Supprimer" Margin="481,135,33,0" VerticalAlignment="Top" Height="36" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
+            <ListBox  ItemsSource="{Binding Listsalle}" SelectedItem="{Binding Selectedsalle}" HorizontalAlignment="Left" Height="67" Margin="21,104,0,0" VerticalAlignment="Top" Width="419">
+                
+            </ListBox>
+            <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="241" Margin="10,201,0,0" Stroke="Black" VerticalAlignment="Top" Width="601" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
+            <Label  HorizontalAlignment="Center" Margin="32,185,496,0" VerticalAlignment="Top" Height="29" Width="93" FontSize="15" Background="#FFD1D1D1">
+                <Bold>Information</Bold>
+            </Label>
+            <Image HorizontalAlignment="Left" Height="188" Margin="43,233,0,0" VerticalAlignment="Top" Width="259" Source="https://www.olybop.fr/wp-content/uploads/2016/04/inspiration-gif-design-240x180.gif"/>
+            <Label Content="Nom de la salle :" HorizontalAlignment="Left" Margin="318,249,0,0" VerticalAlignment="Top"/>
+            <Label Content="Thème de la salle :" HorizontalAlignment="Left" Margin="318,278,0,0" VerticalAlignment="Top"/>
+            <Label Content="Note moyenne :" HorizontalAlignment="Left" Margin="318,307,0,0" VerticalAlignment="Top"/>
+            <Label Content="/ 5" HorizontalAlignment="Left" Margin="444,307,0,0" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="416,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="24" Background="#FFCAE2FF" Height="24"/>
+            <TextBlock HorizontalAlignment="Left" Margin="428,278,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" Background="#FFCAE2FF" Height="24"/>
+            <TextBlock HorizontalAlignment="Left" Margin="419,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106" Background="#FFCAE2FF" Height="24"/>
+            <Label Content="Lieu :" HorizontalAlignment="Left" Margin="318,336,0,0" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="354,338,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="24"/>
+            <Button Panel.ZIndex="100" BorderThickness="2,2,2,2" Content="Modifier" Margin="481,385,33,0" VerticalAlignment="Top" Height="36" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White" Click="Button_Click_1"/>
+            <Label  HorizontalAlignment="Center" Margin="32,65,541,0" VerticalAlignment="Top" Height="29" Width="48" FontSize="15" Background="#FFD1D1D1">
+                <Bold>Salles</Bold>
+            </Label>
+        </Grid>
+
+
+        <Grid x:Name="grid3"   HorizontalAlignment="Left" Height="452" Margin="179,0,0,0" VerticalAlignment="Top" Width="621" Background="#FFD1D1D1">
+            <Label  Foreground="#FF2017D4" FontSize="30" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Height="63" Width="145">
+                <Bold>Avis
+                </Bold>
+            </Label>
+            <Label Margin="30,66,503,350"  Canvas.Left="24" Canvas.Top="61" FontSize="15" Background="#FFD1D1D1" Canvas.ZIndex="7">
+                <Bold>Rechercher
+                </Bold>
+            </Label>
+            <Canvas>
+                <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="361" Stroke="Black" VerticalAlignment="Top" Width="182" RadiusY="15" RadiusX="15" Canvas.Left="10" Canvas.Top="81" StrokeThickness="2"/>
+                <TextBox Name="textBox1" Width="86" Height="25" Canvas.Left="87" Canvas.Top="99" CaretBrush="Black" Foreground="Black" BorderBrush="#89000000" />
+
+                <Label Content="Client :" Canvas.Left="29" Canvas.Top="99" FontSize="15" Height="25" Background="#FFD1D1D1"/>
+                <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="149" Stroke="Black" VerticalAlignment="Top" Width="403" RadiusY="15" RadiusX="15" Canvas.Left="208" Canvas.Top="81" StrokeThickness="2"/>
+                <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="192" Stroke="Black" VerticalAlignment="Top" Width="403" RadiusY="15" RadiusX="15" Canvas.Left="208" Canvas.Top="250" StrokeThickness="2"/>
+                <Label Content="Nom :" Canvas.Left="224" Canvas.Top="102"/>
+                <Label Content="Prénom :" Canvas.Left="224" Canvas.Top="131"/>
+                <Label Content="Adresse e-mail :" Canvas.Left="224" Canvas.Top="160"/>
+                <Label Content="Nombre d'avis :" Canvas.Left="224" Canvas.Top="189"/>
+                <TextBlock Canvas.Left="224" TextWrapping="Wrap" Text="AVIS" Canvas.Top="274" Height="142" Width="363"/>
+            </Canvas>
+            <ListBox HorizontalAlignment="Left" Height="285" Margin="21,145,0,0" VerticalAlignment="Top" Width="159">
+                <ListBoxItem Content="def"/>
+            </ListBox>
+            <Label Margin="230,66,246,350" FontSize="15" Background="#FFD1D1D1" Panel.ZIndex="7">
+                <Bold>
+                    <Run Text="Informations client"/>
+                </Bold>
+            </Label>
+            <Label Margin="230,236,287,180" FontSize="15" Background="#FFD1D1D1" Panel.ZIndex="7">
+                <Bold>
+                    <Run Text="Avis du client"/>
+                </Bold>
+            </Label>
+            <TextBlock HorizontalAlignment="Left" Margin="267,102,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="25"/>
+            <TextBlock HorizontalAlignment="Left" Margin="278,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="25"/>
+            <TextBlock HorizontalAlignment="Left" Margin="318,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Background="#FFCAE2FF" Height="25"/>
+            <TextBlock HorizontalAlignment="Left" Margin="318,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Background="#FFCAE2FF" Height="25"/>
+        </Grid>
+
+        <Grid x:Name="grid4" Canvas.ZIndex="6"  HorizontalAlignment="Left" Height="452" Margin="179,0,0,0" VerticalAlignment="Top" Width="621" Background="#FFD1D1D1">
+            <ListBox ItemsSource="{Binding Listsalle}" SelectedItem="{Binding Selectedsalle}" Canvas.ZIndex="7" HorizontalAlignment="Left" Height="318" Margin="21,109,0,0" VerticalAlignment="Top" Width="145">
+                
+
+            </ListBox>
+            <Rectangle Fill="#FFD1D1D1" HorizontalAlignment="Left" Height="364" Margin="196,78,0,0" Stroke="Black" VerticalAlignment="Top" Width="415" RadiusY="15" RadiusX="15" StrokeThickness="2" />
+            <Rectangle Stroke="Black" Fill="#00D6D6D6" HorizontalAlignment="Left" Height="364" Margin="10,78,0,0" RadiusY="15" RadiusX="15" VerticalAlignment="Top" Width="170" StrokeThickness="2" />
+            <Label Margin="30,65,543,348"  Canvas.Left="24" Canvas.Top="61" FontSize="15" Background="#FFD1D1D1">
+                <Bold>Salles</Bold>
+            </Label>
+            <Button Canvas.ZIndex="8" BorderThickness="2,2,2,2" Content="Ajouter" HorizontalAlignment="Left" Margin="211,395,0,0" VerticalAlignment="Top" Width="106" Height="37" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
+            <Button Canvas.ZIndex="8" BorderThickness="2,2,2,2" Content="Supprimer" HorizontalAlignment="Left" Margin="489,395,0,0" VerticalAlignment="Top" Width="106" Height="37" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
+            <Button Canvas.ZIndex="8" BorderThickness="2,2,2,2" Content="Changer" Margin="352,395,163,0" VerticalAlignment="Top" Height="37" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
+            <Label Content="Nom de la salle :" HorizontalAlignment="Left" Margin="211,109,0,0" VerticalAlignment="Top"/>
+            <Label Content="Nombre d'obstacle :" HorizontalAlignment="Left" Margin="211,138,0,0" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="307,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Background="#FFCAE2FF" Height="24" Text="{Binding Nom}" />
+            <TextBlock HorizontalAlignment="Left" Margin="211,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="69"/>
+            <TextBlock HorizontalAlignment="Left" Margin="331,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" Background="#FFCAE2FF" Height="24" Text="{Binding Nombre}"/>
+            <TextBlock HorizontalAlignment="Left" Margin="310,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="69"/>
+            <TextBlock HorizontalAlignment="Left" Margin="410,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="69"/>
+            <TextBlock HorizontalAlignment="Left" Margin="509,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="69"/>
+            <TextBlock HorizontalAlignment="Left" Margin="211,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="69"/>
+            <TextBlock HorizontalAlignment="Left" Margin="310,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="69"/>
+            <TextBlock HorizontalAlignment="Left" Margin="410,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="69"/>
+            <TextBlock HorizontalAlignment="Left" Margin="509,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="69"/>
+            <Label  Foreground="#FF2017D4" FontSize="30" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Height="63" Width="145">
+                <Bold>Obstacle
+                </Bold>
+            </Label>
+            <Label Margin="223,65,324,348"  FontSize="15" Background="#FFD1D1D1">
+                <Bold>Obstacles
+                </Bold>
+            </Label>
+        </Grid>
+
+
+
+    </Grid>
+</Window>
