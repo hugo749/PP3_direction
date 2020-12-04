@@ -38,7 +38,7 @@
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF4776F5">
                     <ListViewItem Height="60" Selected="ListViewItem_Selected">
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Foreground="white" Kind="TabletDashboard" Width="25" Height="25" FontSize="25"  VerticalAlignment="center"/>
+                            <materialDesign:PackIcon  Foreground="white" Kind="TabletDashboard" Width="25" Height="25" FontSize="25"  VerticalAlignment="center"/>
                             <TextBlock FontSize="20" VerticalAlignment="Center" Margin="20 10" Foreground="White" FontFamily="Century Gothic">
                                 Statistiques
                             </TextBlock>
