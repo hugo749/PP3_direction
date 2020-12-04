@@ -1,0 +1,5 @@
+id;roleUser;idVille;identifiant;mdp
+1;administrateur;1;ADM;azerty
+2;clients;2;CL;azerty1
+3;directeur;3;DR;azerty2
+4;technicien;4;TEC;azerty3
