@@ -32,6 +32,7 @@ namespace PP3_direction
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
             grid4.Visibility = Visibility.Hidden;
+            HOME.Visibility = Visibility.Visible;
         }
 
         private void ButtonPOPUPlog_Click(object sender, RoutedEventArgs e)
@@ -45,6 +46,7 @@ namespace PP3_direction
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
             grid4.Visibility = Visibility.Hidden;
+            HOME.Visibility = Visibility.Hidden;
         }
 
         private void ListViewItem_Selected_1(object sender, RoutedEventArgs e)
@@ -53,6 +55,7 @@ namespace PP3_direction
             grid1.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
             grid4.Visibility = Visibility.Hidden;
+            HOME.Visibility = Visibility.Hidden;
         }
 
         private void ListViewItem_Selected_2(object sender, RoutedEventArgs e)
@@ -61,6 +64,7 @@ namespace PP3_direction
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
             grid4.Visibility = Visibility.Hidden;
+            HOME.Visibility = Visibility.Hidden;
         }
 
         private void ListViewItem_Selected_3(object sender, RoutedEventArgs e)
@@ -69,8 +73,7 @@ namespace PP3_direction
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
-            
-
+            HOME.Visibility = Visibility.Hidden;
         }
 
         

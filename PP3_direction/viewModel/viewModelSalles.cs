@@ -34,6 +34,7 @@ namespace PP3_direction.viewModel
         private ObservableCollection<Ville> listville;
 
         private Salle selectedSalle = new Salle();
+        private Client selectedclient = new Client();
 
 
         //déclaration des listes...à compléter avec les fromages
@@ -51,6 +52,30 @@ namespace PP3_direction.viewModel
         //par exemple...
 
 
+
+
+        //public Object Count
+        //{
+
+        //}
+
+        //public Client nom
+        //{
+        //    get => Selectedclient.IdClient;
+        //    set
+        //    {
+        //        if (Selectedclient.IdClient != value)
+        //        {
+        //            Selectedclient.IdClient = value;
+        //            OnPropertyChanged("Listclient");
+        //        }
+        //    }
+        //}
+
+
+        
+
+
         public Ville Nom
         {
             get => Selectedsalle.IdLieu;
@@ -64,12 +89,35 @@ namespace PP3_direction.viewModel
             }
         }
 
-        //public Object Id
-        //{
 
-        //}
+        public string NomCl
+        {
+            get => SelectedClient.Nom;
+            set
+            {
+                if (SelectedClient.Nom != value)
+                {
+                    SelectedClient.Nom = value;
+                    OnPropertyChanged("NomClient");
+                }
+            }
+        }
 
+        public Client SelectedClient
+        {
+            get => selectedclient;
+            set
+            {
+                if (selectedclient != value)
+                {
+                    selectedclient = value;
 
+                    OnPropertyChanged("Listclient");
+                    OnPropertyChanged("NomClient");
+
+                }
+            }
+        }
 
         public Salle Selectedsalle
         {
@@ -83,6 +131,7 @@ namespace PP3_direction.viewModel
                     OnPropertyChanged("Listsalle");
                     OnPropertyChanged("Nom");
                     OnPropertyChanged("Nombre");
+                    
 
 
                 }

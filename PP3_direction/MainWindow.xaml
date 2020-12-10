@@ -74,7 +74,10 @@
             </StackPanel>
         </Grid>
 
-
+        <Grid Grid.Column="1" x:Name="HOME">
+            <Label FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="70" Foreground="#FF2017D4">
+                Logiciel Directeur</Label>
+        </Grid>
         <Grid x:Name="grid1" HorizontalAlignment="Left" Height="590" Margin="179,0,0,0" VerticalAlignment="Top" Width="891"  Background="#FFD1D1D1" Grid.ColumnSpan="2" >
             <Label  Foreground="#FF2017D4" FontSize="30" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Height="63" Width="160">
                 <Bold>
@@ -143,13 +146,13 @@
                 <Label Content="Client :" Canvas.Left="29" Canvas.Top="99" FontSize="15" Height="25" Background="#FFD1D1D1"/>
                 <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="241" Stroke="Black" VerticalAlignment="Top" Width="566" RadiusY="15" RadiusX="15" Canvas.Left="309" Canvas.Top="81" StrokeThickness="2"/>
                 <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="231" Stroke="Black" VerticalAlignment="Top" Width="566" RadiusY="15" RadiusX="15" Canvas.Left="309" Canvas.Top="349" StrokeThickness="2"/>
-                <Label Content="Nom :" Canvas.Left="330" Canvas.Top="118" FontSize="15"/>
+                <Label Content="Nom :" Canvas.Left="330" Canvas.Top="118" FontSize="15" />
                 <Label Content="Prénom :" Canvas.Left="330" Canvas.Top="149" FontSize="15"/>
                 <Label Content="Adresse e-mail :" Canvas.Left="328" Canvas.Top="180" FontSize="15"/>
                 <Label Content="Nombre d'avis :" Canvas.Left="328" Canvas.Top="211" RenderTransformOrigin="1.58,1.909" FontSize="15"/>
                 <TextBlock Canvas.Left="328" TextWrapping="Wrap" Text="AVIS" Canvas.Top="382" Height="181" Width="524" FontSize="15"/>
             </Canvas>
-            <ListBox HorizontalAlignment="Left" Height="411" Margin="21,145,0,0" VerticalAlignment="Top" Width="256">
+            <ListBox HorizontalAlignment="Left" Height="411" Margin="21,145,0,0" VerticalAlignment="Top" Width="256"  ItemsSource="{Binding Listclient}" SelectedItem="{Binding Selectedclient}" >
 
             </ListBox>
             <Label Margin="330,66,384,490" FontSize="18" Background="#FFD1D1D1" Panel.ZIndex="7">
@@ -162,13 +165,13 @@
                     <Run Text="Avis du client"/>
                 </Bold>
             </Label>
-            <TextBlock HorizontalAlignment="Left" Margin="392,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="25"/>
+            <TextBlock Text="{Binding NomClient}" HorizontalAlignment="Left" Margin="392,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="25"/>
             <TextBlock HorizontalAlignment="Left" Margin="415,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="25"/>
-            <TextBlock HorizontalAlignment="Left" Margin="444,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Background="#FFCAE2FF" Height="25"/>
+            <TextBlock HorizontalAlignment="Left" Margin="455,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Background="#FFCAE2FF" Height="25"/>
             <TextBlock HorizontalAlignment="Left" Margin="455,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Background="#FFCAE2FF" Height="25"/>
         </Grid>
 
-        <Grid x:Name="grid4" Canvas.ZIndex="6"  HorizontalAlignment="Left" Height="590" Margin="179,0,0,0" VerticalAlignment="Top" Width="891" Background="#FFD1D1D1" Grid.ColumnSpan="2">
+       <Grid x:Name="grid4" Canvas.ZIndex="6"  HorizontalAlignment="Left" Height="590" Margin="179,0,0,0" VerticalAlignment="Top" Width="891" Background="#FFD1D1D1" Grid.ColumnSpan="2">
             <ListBox ItemsSource="{Binding Listsalle}" SelectedItem="{Binding Selectedsalle}" Canvas.ZIndex="7" HorizontalAlignment="Left" Height="456" Margin="21,109,0,0" VerticalAlignment="Top" Width="247">
 
 

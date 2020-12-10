@@ -121,5 +121,13 @@ namespace ModelLayer.Data
             string query = "Obstacle where id = " + unObstacle.Id + ";";
             this.mydbal.Delete(query);
         }
+
+        public Obstacle Count(int id)
+        {
+            DataRow rowObstacle = this.mydbal.SelectById("Obstacle", id);
+
+            Theme myTheme = this.theDaoTheme.SelectById((int)rowObstacle["id"]);
+            return new Obstacle((int)rowObstacle["id"], (string)rowObstacle["nom"], (string)rowObstacle["photo"], (string)rowObstacle["commentaire"], (int)rowObstacle["difficulte"], (int)rowObstacle["prix"], myTheme);
+        }
     }
 }

@@ -142,5 +142,13 @@ namespace ModelLayer.Data
 
             return dataset.Tables[0].Rows[0];
         }
+
+        public DataRow Count(int id, string table)
+        {
+            string query = "SELECT count( " + id + ") FROM " + table;
+            DataSet dataSet = RQuery(query);
+
+            return dataSet.Tables[0].Rows[0];
+        }
     }
 }
