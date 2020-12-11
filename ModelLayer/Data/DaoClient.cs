@@ -17,6 +17,7 @@ namespace ModelLayer.Data
         private Dbal theDbal;
 
         private DaoClient theDaoClient;
+        private DaoTheme theDaoTheme;
 
         public DaoClient(Dbal dbal)
         {
@@ -122,6 +123,41 @@ namespace ModelLayer.Data
             this.theDbal.Delete(query);
 
 
+
+
+        }
+
+
+        public List<Avis> SelectAvis(Client uniencli)
+
+
+        {
+            List<Avis> listJ = new List<Avis>();
+
+
+            DataTable myTable = this.theDbal.SelectByField("Client", " idClient = " + uniencli.Id);
+
+
+            foreach (DataRow r in myTable.Rows)
+
+
+            {
+
+
+                Theme unTheme = this.theDaoTheme.SelectById((int)r["idTheme"]);
+                Client unClient = this.theDaoClient.SelectById((int)r["idClient"]);
+
+
+                listJ.Add(new Avis((int)r["id"], unClient, (int)r["note"], (string)r["commentaire"], unTheme));
+
+
+            }
+
+
+
+
+
+            return listJ;
 
 
         }

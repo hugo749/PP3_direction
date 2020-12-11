@@ -34,7 +34,9 @@ namespace PP3_direction.viewModel
         private ObservableCollection<Ville> listville;
 
         private Salle selectedSalle = new Salle();
-        private Client selectedclient = new Client();
+        private Client selectedClient = new Client();
+        private Avis selectesAvis = new Avis();
+
 
 
         //déclaration des listes...à compléter avec les fromages
@@ -73,48 +75,165 @@ namespace PP3_direction.viewModel
         //}
 
 
-        
 
 
-        public Ville Nom
+
+        //----------------------//
+        //   Liste des clients  //
+        //----------------------//
+
+        public string PrenomClient
         {
-            get => Selectedsalle.IdLieu;
+            get => Selectedclient.Prenom;
+
             set
             {
-                if (Selectedsalle.IdLieu != value)
+                if (Selectedclient.Prenom != value)
                 {
-                    Selectedsalle.IdLieu = value;
-                    OnPropertyChanged("Nom");
+                    Selectedclient.Prenom = value;
+                    OnPropertyChanged("PrenomClient");
                 }
             }
         }
 
-
-        public string NomCl
+        public string AdressClient
         {
-            get => SelectedClient.Nom;
+            get => Selectedclient.Mail;
             set
             {
-                if (SelectedClient.Nom != value)
+                if (Selectedclient.Mail != value)
                 {
-                    SelectedClient.Nom = value;
+                    Selectedclient.Mail = value;
+                    OnPropertyChanged("AdressClient");
+                }
+            }
+        }
+
+        public string NomClient
+        {
+            get => Selectedclient.Nom;
+            
+            set
+            {
+                if (Selectedclient.Nom != value)
+                {
+                    Selectedclient.Nom = value;
                     OnPropertyChanged("NomClient");
                 }
             }
         }
 
-        public Client SelectedClient
+        public int TelClient
         {
-            get => selectedclient;
+            get => Selectedclient.Telephone;
+
             set
             {
-                if (selectedclient != value)
+                if (Selectedclient.Telephone != value)
                 {
-                    selectedclient = value;
+                    Selectedclient.Telephone = value;
+                    OnPropertyChanged("TelClient");
+                }
+            }
+        }
+
+        public DateTime DDNClient
+        {
+            get => Selectedclient.DateNaissance;
+
+            set
+            {
+                if (Selectedclient.DateNaissance != value)
+                {
+                    Selectedclient.DateNaissance = value;
+                    OnPropertyChanged("DDNClient");
+                }
+            }
+        }
+
+        public string AvisClients
+        {
+            get => Selectedavis.Commentaire;
+            set
+            {
+                if (Selectedavis.Commentaire !=  value)
+                {
+                    selectesAvis.Commentaire = value;
+                    OnPropertyChanged("");
+                }
+            }
+        }
+
+       public Avis Selectedavis
+        {
+            get => selectesAvis;
+            set
+            {
+                if (selectesAvis != value)
+                {
+                    selectesAvis = value;
+                    OnPropertyChanged("ListAvis");
+                }
+            }
+        }
+
+        public Client Selectedclient
+        {
+            get => selectedClient;
+            set
+            {
+                if (selectedClient != value)
+                {
+                    selectedClient = value;
 
                     OnPropertyChanged("Listclient");
                     OnPropertyChanged("NomClient");
+                    OnPropertyChanged("PrenomClient");
+                    OnPropertyChanged("AdressClient");
+                    OnPropertyChanged("TelClient");
+                    OnPropertyChanged("DDNClient");
+                    OnPropertyChanged("AvisClient");
 
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //----------------------//
+        //   Liste des salles   //
+        //----------------------//
+        public string Nomville
+        {
+            get
+            {
+                if (Selectedsalle.Id != 0)
+                {
+                    return Selectedsalle.IdLieu.Nom;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+                
+
+            set
+            {
+                if (Selectedsalle.IdLieu.Nom != value)
+                {
+                    Selectedsalle.IdLieu.Nom = value;
+                    OnPropertyChanged("Nomville");
                 }
             }
         }
@@ -129,14 +248,15 @@ namespace PP3_direction.viewModel
                     selectedSalle = value;
 
                     OnPropertyChanged("Listsalle");
-                    OnPropertyChanged("Nom");
-                    OnPropertyChanged("Nombre");
+                    OnPropertyChanged("Nomville");
+                   
                     
-
-
                 }
             }
         }
+
+
+
 
         public viewModelSalles(DaoAvis thedaoavis,
             DaoClient thedaoclients,

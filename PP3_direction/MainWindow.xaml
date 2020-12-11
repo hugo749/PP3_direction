@@ -74,7 +74,7 @@
             </StackPanel>
         </Grid>
 
-        <Grid Grid.Column="1" x:Name="HOME">
+         <Grid Grid.Column="1" x:Name="HOME">
             <Label FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="70" Foreground="#FF2017D4">
                 Logiciel Directeur</Label>
         </Grid>
@@ -150,9 +150,11 @@
                 <Label Content="Prénom :" Canvas.Left="330" Canvas.Top="149" FontSize="15"/>
                 <Label Content="Adresse e-mail :" Canvas.Left="328" Canvas.Top="180" FontSize="15"/>
                 <Label Content="Nombre d'avis :" Canvas.Left="328" Canvas.Top="211" RenderTransformOrigin="1.58,1.909" FontSize="15"/>
-                <TextBlock Canvas.Left="328" TextWrapping="Wrap" Text="AVIS" Canvas.Top="382" Height="181" Width="524" FontSize="15"/>
+                <Label Content="Téléphone :" Canvas.Left="328" Canvas.Top="237" RenderTransformOrigin="1.58,1.909" FontSize="15"/>
+                <Label Content="Date de naissance :" Canvas.Left="328" Canvas.Top="263" RenderTransformOrigin="1.58,1.909" FontSize="15"/>
+                <ListBox ItemsSource="{Binding ListAvis}" SelectedItem="{Binding Selectedavis}"  Height="187" Canvas.Left="330" Canvas.Top="374" Width="524"/>
             </Canvas>
-            <ListBox HorizontalAlignment="Left" Height="411" Margin="21,145,0,0" VerticalAlignment="Top" Width="256"  ItemsSource="{Binding Listclient}" SelectedItem="{Binding Selectedclient}" >
+            <ListBox HorizontalAlignment="Left" Height="411" Margin="21,145,0,0" VerticalAlignment="Top" Width="256"  ItemsSource="{Binding ListClients}" SelectedItem="{Binding Selectedclient}" >
 
             </ListBox>
             <Label Margin="330,66,384,490" FontSize="18" Background="#FFD1D1D1" Panel.ZIndex="7">
@@ -166,12 +168,14 @@
                 </Bold>
             </Label>
             <TextBlock Text="{Binding NomClient}" HorizontalAlignment="Left" Margin="392,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="25"/>
-            <TextBlock HorizontalAlignment="Left" Margin="415,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="25"/>
-            <TextBlock HorizontalAlignment="Left" Margin="455,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Background="#FFCAE2FF" Height="25"/>
+            <TextBlock Text="{Binding PrenomClient}" HorizontalAlignment="Left" Margin="415,151,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="25"/>
+            <TextBlock Text="{Binding AdressClient}" HorizontalAlignment="Left" Margin="455,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" Background="#FFCAE2FF" Height="25"/>
             <TextBlock HorizontalAlignment="Left" Margin="455,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Background="#FFCAE2FF" Height="25"/>
+            <TextBlock Text="{Binding TelClient}" HorizontalAlignment="Left" Margin="432,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Background="#FFCAE2FF" Height="25"/>
+            <TextBlock Text="{Binding DDNClient}" HorizontalAlignment="Left" Margin="483,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Background="#FFCAE2FF" Height="25"/>
         </Grid>
 
-       <Grid x:Name="grid4" Canvas.ZIndex="6"  HorizontalAlignment="Left" Height="590" Margin="179,0,0,0" VerticalAlignment="Top" Width="891" Background="#FFD1D1D1" Grid.ColumnSpan="2">
+        <Grid x:Name="grid4" Canvas.ZIndex="6"  HorizontalAlignment="Left" Height="590" Margin="179,0,0,0" VerticalAlignment="Top" Width="891" Background="#FFD1D1D1" Grid.ColumnSpan="2">
             <ListBox ItemsSource="{Binding Listsalle}" SelectedItem="{Binding Selectedsalle}" Canvas.ZIndex="7" HorizontalAlignment="Left" Height="456" Margin="21,109,0,0" VerticalAlignment="Top" Width="247">
 
 
@@ -186,7 +190,7 @@
             <Button Canvas.ZIndex="8" BorderThickness="2,2,2,2" Content="Changer" FontSize="17" Margin="710,528,46,0" VerticalAlignment="Top" Height="37" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
             <Label Content="Nom de la salle :" HorizontalAlignment="Left" Margin="320,111,0,0" VerticalAlignment="Top" FontSize="15"/>
             <Label Content="Nombre d'obstacle :" HorizontalAlignment="Left" Margin="320,140,0,0" VerticalAlignment="Top" FontSize="15"/>
-            <TextBlock HorizontalAlignment="Left" Margin="455,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Background="#FFCAE2FF" Height="24" Text="{Binding Nom}" />
+            <TextBlock HorizontalAlignment="Left" Margin="455,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Background="#FFCAE2FF" Height="24" Text="{Binding Nomville}" />
             <TextBlock HorizontalAlignment="Left" Margin="320,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="69"/>
             <TextBlock HorizontalAlignment="Left" Margin="482,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="31" Background="#FFCAE2FF" Height="24" Text="{Binding Nombre}"/>
             <TextBlock HorizontalAlignment="Left" Margin="474,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFCAE2FF" Height="69"/>

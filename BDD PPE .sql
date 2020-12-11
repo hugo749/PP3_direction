@@ -110,6 +110,9 @@ PRIMARY KEY (datepot, type_date)
 );
 
 
+select * from Avis where idClient = 1;
+
+
 #------------------INSERT------------------#
 
 insert into Clients VALUES (1, 'feige', 'hugo', '0606060606', "hugo.feige@saintmichelannecy.fr", 0, '2000-05-05',"image.jpg",0);
