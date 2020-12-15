@@ -15,7 +15,7 @@ namespace ModelLayer.Data
 
 
         //Constructor
-        public Dbal(string database, string uid = "root", string password = "5MichelAnnecy", string server = "localhost")
+        public Dbal(string database, string uid = "root", string password = "", string server = "localhost")
         {
             Initialize(database, uid, password, server);
         }
@@ -150,5 +150,19 @@ namespace ModelLayer.Data
 
             return dataSet.Tables[0].Rows[0];
         }
+
+
+        public DataTable SelectAllIdClient()
+        {
+            string query = "SELECT idClient FROM Avis";
+            DataSet set = RQuery(query);
+
+            return set.Tables[0];
+        }
+
+        //public DataTable SelectMoyenneNote()
+        //{
+        //    string query = "";
+        //}
     }
 }

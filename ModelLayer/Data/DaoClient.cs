@@ -90,7 +90,7 @@ namespace ModelLayer.Data
             foreach (DataRow r in myTable.Rows)
 
             {
-                listClient.Add(new Client((int)r["id"], (string)r["nom"], (string)r["prenom"], (int)r["telephone"], (string)r["mail"], (int)r["credit"], (DateTime)r["dateNaissance"], (string)r["photo"], (int)r["NbPartie"]));
+                listClient.Add(new Client((int)r["id"], (string)r["nom"], (string)r["prenom"], (int)r["telephone"], (string)r["mail"], (int)r["credit"], (DateTime)r["dateNaissance"], (int)r["NbPartie"]));
             }
             return listClient;
         }
@@ -102,7 +102,7 @@ namespace ModelLayer.Data
            // Client myCLient = this.theDaoClient.SelectById((int)rowClient["nom"]);
 
 
-            return new Client((int)rowClient["id"], (string)rowClient["nom"], (string)rowClient["prenom"], (int)rowClient["telephone"], (string)rowClient["mail"], (int)rowClient["credit"], (DateTime)rowClient["dateNaissance"], (string)rowClient["photo"], (int)rowClient["NbPartie"]);
+            return new Client((int)rowClient["id"], (string)rowClient["nom"], (string)rowClient["prenom"], (int)rowClient["telephone"], (string)rowClient["mail"], (int)rowClient["credit"], (DateTime)rowClient["dateNaissance"], (int)rowClient["NbPartie"]);
         }
 
         public Client SelectByName(string name)
@@ -112,7 +112,7 @@ namespace ModelLayer.Data
             DataTable tableClient = this.theDbal.SelectByField("Clients", search);
 
             Client myClient = this.theDaoClient.SelectById((int)tableClient.Rows[0]["nom"]);
-            return new Client((int)tableClient.Rows[0]["id"], (string)tableClient.Rows[0]["nom"], (string)tableClient.Rows[0]["prenom"], (int)tableClient.Rows[0]["telephone"], (string)tableClient.Rows[0]["mail"], (int)tableClient.Rows[0]["credit"], (DateTime)tableClient.Rows[0]["dateNaissance"], (string)tableClient.Rows[0]["photo"], (int)tableClient.Rows[0]["NbPartie"]);
+            return new Client((int)tableClient.Rows[0]["id"], (string)tableClient.Rows[0]["nom"], (string)tableClient.Rows[0]["prenom"], (int)tableClient.Rows[0]["telephone"], (string)tableClient.Rows[0]["mail"], (int)tableClient.Rows[0]["credit"], (DateTime)tableClient.Rows[0]["dateNaissance"],  (int)tableClient.Rows[0]["NbPartie"]);
         }
 
         public void Delete(Client unCLient)
@@ -160,6 +160,18 @@ namespace ModelLayer.Data
             return listJ;
 
 
+        }
+
+
+        public List<Client> SearchbyName(string table, string conditions)
+        {
+            List<Client> listClient = new List<Client>();
+            DataTable myTable = theDbal.SelectByField(table, conditions);
+            foreach (DataRow r in myTable.Rows)
+            {
+                listClient.Add(new Client((int)r["id"], (string)r["nom"], (string)r["prenom"], (int)r["telephone"], (string)r["mail"], (int)r["credit"], (DateTime)r["dateNaissance"], (int)r["NbPartie"]));
+            }
+            return listClient;
         }
     }
 }

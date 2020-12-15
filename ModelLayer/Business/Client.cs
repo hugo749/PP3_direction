@@ -28,7 +28,7 @@ namespace ModelLayer.Business
         public string Photo { get => photo; set => photo = value; }
         public int Nbpartie { get => nbpartie; set => nbpartie = value; }
 
-        public Client(int id, string nom, string prenom, int telephone, string mail, int credit, DateTime dateNaissance, string photo, int nbpartie)
+        public Client(int id, string nom, string prenom, int telephone, string mail, int credit, DateTime dateNaissance, int nbpartie)
         {
             Id = id;
             Nom = nom;
@@ -37,8 +37,7 @@ namespace ModelLayer.Business
             Mail = mail;
             Credit = credit;
             DateNaissance = dateNaissance;
-            Photo = photo;
-            Nbpartie = nbpartie;
+                       Nbpartie = nbpartie;
         }
         
         public Client(){}

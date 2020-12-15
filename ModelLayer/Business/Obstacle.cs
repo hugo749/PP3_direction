@@ -37,6 +37,9 @@ namespace ModelLayer.Business
         
         public Obstacle(){}
 
-        
+        public override string ToString()
+        {
+            return this.Nom.ToString();
+        }
     }
 }

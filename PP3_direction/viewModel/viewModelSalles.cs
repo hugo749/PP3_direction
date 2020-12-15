@@ -23,6 +23,7 @@ namespace PP3_direction.viewModel
         private DaoUtilisateur _thedaoutilisateurs;
         private DaoVille _thedaoville;
         private ICommand updateCommand;
+        private ICommand barreCommande;
         private ObservableCollection<Client> listClients; 
         private ObservableCollection<Avis> listAvis;
         private ObservableCollection<Obstacle> listObstacles;
@@ -36,10 +37,13 @@ namespace PP3_direction.viewModel
         private Salle selectedSalle = new Salle();
         private Client selectedClient = new Client();
         private Avis selectesAvis = new Avis();
+        private Theme selectedTheme = new Theme();
+        private Obstacle selectedObstacles = new Obstacle();
 
-
+        public string Recherche { get; set; }
 
         //déclaration des listes...à compléter avec les fromages
+        
         public ObservableCollection<Avis> ListAvis { get => listAvis; set => listAvis = value; }
         public ObservableCollection<Client> ListClients { get => listClients; set => listClients = value; }
         public ObservableCollection<Obstacle> ListObstacles { get => listObstacles; set => listObstacles = value; }
@@ -111,9 +115,19 @@ namespace PP3_direction.viewModel
 
         public string NomClient
         {
-            get => Selectedclient.Nom;
-            
-            set
+            get
+            {
+                if (Selectedclient.Nom != null)
+                {
+                    return Selectedclient.Nom;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+                set
             {
                 if (Selectedclient.Nom != value)
                 {
@@ -204,7 +218,20 @@ namespace PP3_direction.viewModel
 
 
 
-
+        //public List<Avis> LesAvisClients(DaoAvis thedaoavis, DaoClient thedaoclient)
+        //{
+        //    List<Avis> lesavisvide = new List<Avis>();
+            
+        //    List<Avis> lesavis = new List<Avis>(thedaoavis.SelectAll());
+        //    foreach (Avis item in lesavis)
+        //    {
+        //        if (item.IdClient.Id == selectedClient.Id)
+        //        {
+        //            lesavisvide.Add(item);
+        //        }
+        //    }
+        //    return lesavisvide;
+        //}
 
 
 
@@ -257,6 +284,114 @@ namespace PP3_direction.viewModel
 
 
 
+        //----------------------//
+        //  Liste des infosalle //
+        //----------------------//
+        
+
+        public string Themes
+        {
+            get
+            {
+                if (selectedTheme != null)
+                {
+                    return selectedTheme.Nom;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+
+            set
+            {
+                if (selectedTheme.Nom != value)
+                {
+                    selectedTheme.Nom = value;
+                    OnPropertyChanged("Themes");
+                }
+            }
+        }
+
+
+        public Salle Selectedsalles
+        {
+            get => selectedSalle;
+            set
+            {
+                if (selectedSalle != value)
+                {
+                    selectedSalle = value;
+
+                    
+                    OnPropertyChanged("Nomvilles");
+                    OnPropertyChanged("Themes");
+
+                }
+            }
+        }
+
+
+
+        public Obstacle Selectedobstacles
+        {
+            get => selectedObstacles;
+            set
+            {
+                if (selectedObstacles != value)
+                {
+                    selectedObstacles = value;
+
+                    OnPropertyChanged("ListObstacles");
+                }
+            }
+        }
+
+        public string UnObstacle
+        {
+            get => Selectedobstacles.Nom;
+            set
+            {
+                if (Selectedobstacles.Nom != value)
+                {
+                    Selectedobstacles.Nom = value;
+                    OnPropertyChanged("ListObstacles");
+                }
+            }
+        }
+
+        public Theme Selectedtheme
+        {
+            get => selectedTheme;
+            set
+            {
+                if (selectedTheme != value)
+                {
+                    selectedTheme = value;
+                    OnPropertyChanged("Listtheme");
+                }
+            }
+        }
+
+        public string UnTheme
+        {
+            get =>Selectedtheme.Nom;
+            set
+            {
+                if (Selectedtheme.Nom != value)
+                {
+                    Selectedtheme.Nom = value;
+                    OnPropertyChanged("Listtheme");
+                }
+            }
+        }
+
+
+
+
+
+
 
         public viewModelSalles(DaoAvis thedaoavis,
             DaoClient thedaoclients,
@@ -278,13 +413,13 @@ namespace PP3_direction.viewModel
             _thedaoutilisateurs = thedaoutilisateurs;
             _thedaoville = thedaoville;
 
-            ListAvis = new ObservableCollection<Avis>(thedaoavis.SelectAll());
-            ListClients = new ObservableCollection<Client>(thedaoclients.SelectAll());
-            ListObstacles = new ObservableCollection<Obstacle>(thedaoobstacles.SelectAll());
-            ListPlacement = new ObservableCollection<Placement_Obstacle>(thedaoplacement.SelectAll());
-            Listreservation = new ObservableCollection<Reservation>(theDaoReservation.SelectAll());
-            Listsalle = new ObservableCollection<Salle>(thedaosalles.SelectAll());
-            Listtheme = new ObservableCollection<Theme> (thedaotheme.SelectAll());
+            listAvis = new ObservableCollection<Avis>(thedaoavis.SelectAll());
+            listClients = new ObservableCollection<Client>(thedaoclients.SelectAll());
+            listObstacles = new ObservableCollection<Obstacle>(thedaoobstacles.SelectAll());
+            listPlacement = new ObservableCollection<Placement_Obstacle>(thedaoplacement.SelectAll());
+            listreservation = new ObservableCollection<Reservation>(theDaoReservation.SelectAll());
+            listsalle = new ObservableCollection<Salle>(thedaosalles.SelectAll());
+            listtheme = new ObservableCollection<Theme> (thedaotheme.SelectAll());
             listutilisateur = new ObservableCollection<Utilisateur> (thedaoutilisateurs.SelectAll());
             listville = new ObservableCollection<Ville>(thedaoville.SelectAll());
 
@@ -340,6 +475,46 @@ namespace PP3_direction.viewModel
         //}
 
 
+        private void Rechercher()
+        {
+            if (this.Recherche != "")
+            {
+                List<Client> listClienIndep = new List<Client>(_thedaoclients.SearchbyName("Clients","Nom Like '" + this.Recherche + "' or Prenom like '" + this.Recherche + "'"));
+                ListClients.Clear();
+                foreach (Client c in listClienIndep)
+                {
+                    ListClients.Add(c);
+                }
+            }
+            else RefreshListCli();
+        }
+
+
+        public ICommand BarreCommande
+        {
+            get
+            {
+                if (this.barreCommande == null)
+                {
+                    this.barreCommande = new RelayCommand(() => Rechercher(), () => true);
+                }
+                return this.barreCommande;
+
+
+
+            }
+        }
+
+
+        public void RefreshListCli()
+        {
+            ObservableCollection<Client> lalistClient = new ObservableCollection<Client>(_thedaoclients.SelectAll());
+            listClients.Clear();
+            foreach (Client c in lalistClient)
+            {
+                listClients.Add(c);
+            }
+        }
 
 
     }

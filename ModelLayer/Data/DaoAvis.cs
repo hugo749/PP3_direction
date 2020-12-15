@@ -112,5 +112,16 @@ namespace ModelLayer.Data
 
             this.mydbal.Delete(query);
         }
+
+        //public List<int> AllIdClient()
+        //{
+        //    List<int> listidlcient = new List<int>();
+        //    DataTable table = this.mydbal.SelectAllIdClient();
+        //    foreach (DataRow item in table.Rows)
+        //    {
+        //        listidlcient.Add((int)item["idClient"]);
+        //    }
+        //    return listidlcient;
+        //}
     }
 }
