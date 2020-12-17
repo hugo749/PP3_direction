@@ -12,6 +12,10 @@ namespace ModelLayer.Business
         private int id;
         private string nom;
 
+        public Ville()
+        {
+        }
+
         public Ville(int id, string nom)
         {
             this.Id = id;

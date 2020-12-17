@@ -25,6 +25,7 @@ namespace PP3_direction
         private DaoTheme thedaotheme;
         private DaoUtilisateur thedaoutilisateurs;
         private DaoVille thedaoville;
+        private DaoHeure thedaoheure;
 
 
         public void Application_Startup(object sender, StartupEventArgs e)
@@ -41,13 +42,14 @@ namespace PP3_direction
             thedaoutilisateurs = new DaoUtilisateur(mydbal, thedaoville);
             thedaoreservation = new DaoReservation(mydbal, thedaoclients, thedaosalles, thedaoutilisateurs, thedaotheme);
             thedaoplacement = new DaoPlacement_Obst(mydbal, thedaoreservation, thedaoobstacles);
+            thedaoheure = new DaoHeure(mydbal);
 
 
 
 
             // Create the startup window
             //là, on lance la fenêtre souhaitée en instanciant la classe de notre fenêtre
-            directeur wnd = new directeur(thedaoavis,thedaoclients,thedaoobstacles,thedaoplacement,thedaoreservation,thedaosalles,thedaotheme,thedaoutilisateurs,thedaoville);            //et on utilise la méthode Show() de notre objet fenêtre pour afficher la fenêtre
+            directeur wnd = new directeur(thedaoavis,thedaoclients,thedaoobstacles,thedaoplacement,thedaoreservation,thedaosalles,thedaotheme,thedaoutilisateurs,thedaoville, thedaoheure);            //et on utilise la méthode Show() de notre objet fenêtre pour afficher la fenêtre
             //exemple: MainWindow lafenetre = new MainWindow(); (et on y passe en paramètre Dbal et Dao au besoin)
             wnd.Show();
 

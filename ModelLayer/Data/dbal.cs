@@ -152,9 +152,9 @@ namespace ModelLayer.Data
         }
 
 
-        public DataTable SelectAllIdClient()
+        public DataTable SelectAllIdClient(string table, string consition)
         {
-            string query = "SELECT idClient FROM Avis";
+            string query = "SELECT * FROM "+table+" where "+consition ;
             DataSet set = RQuery(query);
 
             return set.Tables[0];
@@ -162,7 +162,7 @@ namespace ModelLayer.Data
 
         //public DataTable SelectMoyenneNote()
         //{
-        //    string query = "";
+        //    string query = ""; 
         //}
     }
 }

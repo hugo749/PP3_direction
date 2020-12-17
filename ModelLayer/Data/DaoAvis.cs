@@ -123,5 +123,18 @@ namespace ModelLayer.Data
         //    }
         //    return listidlcient;
         //}
+
+        public List<Avis> Listedesclients(Client unclient)
+        {
+            List<Avis> unslistevide = new List<Avis>();
+            DataTable matable = this.mydbal.SelectAllIdClient("Avis" , " idClient = " + unclient.Id);
+            foreach (DataRow item in matable.Rows)
+            {
+                Theme untheme = this.theDaoTheme.SelectById((int)item["idTheme"]);
+                Client unclients = this.theDaoCLient.SelectById((int)item["idClient"]);
+                unslistevide.Add(new Avis ((int)item["id"], unclients, (int)item["note"], (string)item["commentaire"], untheme ));
+            }
+            return unslistevide;
+        }
     }
 }

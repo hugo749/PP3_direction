@@ -24,14 +24,14 @@ namespace PP3_direction
     /// </summary>
     public partial class directeur : Window
     {
-        public directeur(DaoAvis thedaoavis, DaoClient thedaoclient, DaoObstacle thedaoobstacle, DaoPlacement_Obst thedaoPlacement_Obst, DaoReservation theDaoReservation, DaoSalle thedaosalle, DaoTheme thedaotheme,DaoUtilisateur thedaoutilisateur,DaoVille thedaoville )
+        public directeur(DaoAvis thedaoavis, DaoClient thedaoclient, DaoObstacle thedaoobstacle, DaoPlacement_Obst thedaoPlacement_Obst, DaoReservation theDaoReservation, DaoSalle thedaosalle, DaoTheme thedaotheme,DaoUtilisateur thedaoutilisateur,DaoVille thedaoville, DaoHeure thedaoheure )
         {
             InitializeComponent();
-            Globale.DataContext = new viewModel.viewModelSalles(thedaoavis, thedaoclient ,thedaoobstacle, thedaoPlacement_Obst, theDaoReservation, thedaosalle,thedaotheme,thedaoutilisateur,thedaoville);
+            Globale.DataContext = new viewModel.viewModelSalles(thedaoavis, thedaoclient ,thedaoobstacle, thedaoPlacement_Obst, theDaoReservation, thedaosalle,thedaotheme,thedaoutilisateur,thedaoville, thedaoheure);
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
-            grid4.Visibility = Visibility.Hidden;
+            
             HOME.Visibility = Visibility.Visible;
             
         }
@@ -46,7 +46,7 @@ namespace PP3_direction
             grid1.Visibility = Visibility.Visible;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
-            grid4.Visibility = Visibility.Hidden;
+            
             HOME.Visibility = Visibility.Hidden;
             
         }
@@ -56,7 +56,7 @@ namespace PP3_direction
             grid2.Visibility = Visibility.Visible;
             grid1.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
-            grid4.Visibility = Visibility.Hidden;
+            
             HOME.Visibility = Visibility.Hidden;
             
         }
@@ -66,14 +66,14 @@ namespace PP3_direction
             grid3.Visibility = Visibility.Visible;
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
-            grid4.Visibility = Visibility.Hidden;
+            
             HOME.Visibility = Visibility.Hidden;
             
         }
 
         private void ListViewItem_Selected_3(object sender, RoutedEventArgs e)
         {
-            grid4.Visibility = Visibility.Visible;
+            
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
@@ -91,7 +91,7 @@ namespace PP3_direction
 
         private void ListViewItem_Selected_4(object sender, RoutedEventArgs e)
         {
-            grid4.Visibility = Visibility.Hidden;
+           
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;

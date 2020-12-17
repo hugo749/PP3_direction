@@ -105,6 +105,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\Avis.cs" />
+    <Compile Include="Business\Heure.cs" />
     <Compile Include="Business\Client.cs" />
     <Compile Include="Business\Obstacle.cs" />
     <Compile Include="Business\Placement_Obstacle.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Data\DaoTheme.cs" />
     <Compile Include="Data\DaoTransction.cs" />
     <Compile Include="Data\DaoUtilisateur.cs" />
+    <Compile Include="Data\DaoHeure.cs" />
     <Compile Include="Data\DaoVille.cs" />
     <Compile Include="Data\dbal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

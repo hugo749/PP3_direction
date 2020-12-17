@@ -24,6 +24,7 @@ namespace PP3_direction.viewModel
         private DaoVille _thedaoville;
         private ICommand updateCommand;
         private ICommand barreCommande;
+        private DaoHeure _thedaoheure;
         private ObservableCollection<Client> listClients; 
         private ObservableCollection<Avis> listAvis;
         private ObservableCollection<Obstacle> listObstacles;
@@ -33,12 +34,15 @@ namespace PP3_direction.viewModel
         private ObservableCollection<Theme> listtheme;
         private ObservableCollection<Utilisateur> listutilisateur;
         private ObservableCollection<Ville> listville;
+        private ObservableCollection<Heure> listheure;
 
         private Salle selectedSalle = new Salle();
         private Client selectedClient = new Client();
         private Avis selectesAvis = new Avis();
         private Theme selectedTheme = new Theme();
         private Obstacle selectedObstacles = new Obstacle();
+        private Heure selectedHeure = new Heure();
+        private Ville selectedVille = new Ville();
 
         public string Recherche { get; set; }
 
@@ -53,7 +57,7 @@ namespace PP3_direction.viewModel
         public ObservableCollection<Theme> Listtheme { get => listtheme; set => listtheme = value; }
         public ObservableCollection<Utilisateur> Listutilisateur { get => listutilisateur; set => listutilisateur = value; }
         public ObservableCollection<Ville> Listville { get => listville; set => listville = value; }
-
+        public ObservableCollection<Heure> Listheure { get => listheure; set => listheure = value; }
         //déclaration des propriétés avec OnPropertyChanged("nom_propriété_bindée")
         //par exemple...
 
@@ -196,9 +200,19 @@ namespace PP3_direction.viewModel
             get => selectedClient;
             set
             {
+
                 if (selectedClient != value)
                 {
+
                     selectedClient = value;
+
+                    List<Avis> unsliste;
+                    ListAvis.Clear();
+                    unsliste = _thedaoavis.Listedesclients(selectedClient);
+                    foreach (Avis item in unsliste)
+                    {
+                        ListAvis.Add(item);
+                    }
 
                     OnPropertyChanged("Listclient");
                     OnPropertyChanged("NomClient");
@@ -214,56 +228,12 @@ namespace PP3_direction.viewModel
 
 
 
-
-
-
-
-        //public List<Avis> LesAvisClients(DaoAvis thedaoavis, DaoClient thedaoclient)
-        //{
-        //    List<Avis> lesavisvide = new List<Avis>();
-            
-        //    List<Avis> lesavis = new List<Avis>(thedaoavis.SelectAll());
-        //    foreach (Avis item in lesavis)
-        //    {
-        //        if (item.IdClient.Id == selectedClient.Id)
-        //        {
-        //            lesavisvide.Add(item);
-        //        }
-        //    }
-        //    return lesavisvide;
-        //}
-
-
-
-
-
         //----------------------//
         //   Liste des salles   //
         //----------------------//
-        public string Nomville
-        {
-            get
-            {
-                if (Selectedsalle.Id != 0)
-                {
-                    return Selectedsalle.IdLieu.Nom;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-                
 
-            set
-            {
-                if (Selectedsalle.IdLieu.Nom != value)
-                {
-                    Selectedsalle.IdLieu.Nom = value;
-                    OnPropertyChanged("Nomville");
-                }
-            }
-        }
+
+        
 
         public Salle Selectedsalle
         {
@@ -274,28 +244,94 @@ namespace PP3_direction.viewModel
                 {
                     selectedSalle = value;
 
-                    OnPropertyChanged("Listsalle");
+                    OnPropertyChanged("Theme");
                     OnPropertyChanged("Nomville");
-                   
-                    
+
+
                 }
             }
         }
 
 
 
-        //----------------------//
-        //  Liste des infosalle //
-        //----------------------//
-        
 
-        public string Themes
+
+
+
+
+
+
+
+
+
+
+
+
+        public Heure Selectedheure
+        {
+            get => selectedHeure;
+            set
+            {
+
+                if (selectedHeure != value)
+                {
+
+                    selectedHeure = value;
+
+                   
+
+                    OnPropertyChanged("Listheure");
+                    
+
+                }
+            }
+        }
+
+        public DateTime heure
+        {
+            get => Selectedheure.Heuree;
+
+            set
+            {
+                if (Selectedheure.Heuree != value)
+                {
+                    Selectedheure.Heuree = value;
+                    OnPropertyChanged("Listheure");
+                }
+            }
+        }
+
+
+        public string Theme
         {
             get
             {
-                if (selectedTheme != null)
+                if (selectedSalle.IdLieu != null)
                 {
-                    return selectedTheme.Nom;
+                    return selectedSalle.IdLieu.Nom;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            set
+            {
+                if (selectedSalle.IdTheme.Nom != value)
+                {
+                    selectedSalle.IdTheme.Nom = value;
+                    OnPropertyChanged("Theme");
+                }
+            } 
+        }
+
+        public string Nomville
+        {
+            get 
+            {
+                if (selectedSalle.IdLieu != null)
+                {
+                    return selectedSalle.IdLieu.Nom;
                 }
                 else
                 {
@@ -303,95 +339,15 @@ namespace PP3_direction.viewModel
                 }
 
             }
-
             set
             {
-                if (selectedTheme.Nom != value)
+                if (selectedSalle.IdLieu.Nom != value)
                 {
-                    selectedTheme.Nom = value;
-                    OnPropertyChanged("Themes");
+                    selectedSalle.IdLieu.Nom = value;
+                    OnPropertyChanged("Nomville");
                 }
             }
         }
-
-
-        public Salle Selectedsalles
-        {
-            get => selectedSalle;
-            set
-            {
-                if (selectedSalle != value)
-                {
-                    selectedSalle = value;
-
-                    
-                    OnPropertyChanged("Nomvilles");
-                    OnPropertyChanged("Themes");
-
-                }
-            }
-        }
-
-
-
-        public Obstacle Selectedobstacles
-        {
-            get => selectedObstacles;
-            set
-            {
-                if (selectedObstacles != value)
-                {
-                    selectedObstacles = value;
-
-                    OnPropertyChanged("ListObstacles");
-                }
-            }
-        }
-
-        public string UnObstacle
-        {
-            get => Selectedobstacles.Nom;
-            set
-            {
-                if (Selectedobstacles.Nom != value)
-                {
-                    Selectedobstacles.Nom = value;
-                    OnPropertyChanged("ListObstacles");
-                }
-            }
-        }
-
-        public Theme Selectedtheme
-        {
-            get => selectedTheme;
-            set
-            {
-                if (selectedTheme != value)
-                {
-                    selectedTheme = value;
-                    OnPropertyChanged("Listtheme");
-                }
-            }
-        }
-
-        public string UnTheme
-        {
-            get =>Selectedtheme.Nom;
-            set
-            {
-                if (Selectedtheme.Nom != value)
-                {
-                    Selectedtheme.Nom = value;
-                    OnPropertyChanged("Listtheme");
-                }
-            }
-        }
-
-
-
-
-
-
 
         public viewModelSalles(DaoAvis thedaoavis,
             DaoClient thedaoclients,
@@ -401,7 +357,8 @@ namespace PP3_direction.viewModel
             DaoSalle thedaosalles,
             DaoTheme thedaotheme,
             DaoUtilisateur thedaoutilisateurs,
-            DaoVille thedaoville)
+            DaoVille thedaoville,
+            DaoHeure thedaoheure)
         {
             _thedaoavis = thedaoavis;
             _thedaoclients = thedaoclients;
@@ -412,8 +369,9 @@ namespace PP3_direction.viewModel
             _thedaotheme = thedaotheme;
             _thedaoutilisateurs = thedaoutilisateurs;
             _thedaoville = thedaoville;
+            _thedaoheure = thedaoheure;
 
-            listAvis = new ObservableCollection<Avis>(thedaoavis.SelectAll());
+            listAvis = new ObservableCollection<Avis>(thedaoavis.Listedesclients(Selectedclient));
             listClients = new ObservableCollection<Client>(thedaoclients.SelectAll());
             listObstacles = new ObservableCollection<Obstacle>(thedaoobstacles.SelectAll());
             listPlacement = new ObservableCollection<Placement_Obstacle>(thedaoplacement.SelectAll());
@@ -422,6 +380,7 @@ namespace PP3_direction.viewModel
             listtheme = new ObservableCollection<Theme> (thedaotheme.SelectAll());
             listutilisateur = new ObservableCollection<Utilisateur> (thedaoutilisateurs.SelectAll());
             listville = new ObservableCollection<Ville>(thedaoville.SelectAll());
+            listheure = new ObservableCollection<Heure>(thedaoheure.SelectAll());
 
             //foreach (Fromage lefromage in ListFromages)
             //{

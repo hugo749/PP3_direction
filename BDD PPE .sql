@@ -17,9 +17,22 @@ photo VARCHAR(50),
 NbPartie INT
 )ENGINE INNODB;
 
+
+CREATE TABLE Heure(
+id int primary key,
+heure DateTime
+)ENGINE INNODB;
+
 CREATE TABLE Ville (
 id INT primary key, 
 nom VARCHAR(50)
+)ENGINE INNODB;
+
+CREATE TABLE VilleHeure(
+idville int,
+idheure int,
+FOREIGN KEY (idville) REFERENCES Ville (id),
+FOREIGN KEY (idheure) REFERENCES Heure (id)
 )ENGINE INNODB;
 
 CREATE TABLE Theme(
@@ -67,6 +80,8 @@ prix INT,
 theme INT, 
 FOREIGN KEY (theme) REFERENCES Theme (id)
 )ENGINE INNODB; 
+
+
 
 
 CREATE TABLE Reservation (
@@ -122,14 +137,15 @@ insert into Clients VALUES (3, 'girard', 'antoine', '0806060606', "antoine.girar
 insert into Theme values (1, "Noel"  );
 insert into Theme values (2, "Halloween" );
 insert into Theme values (3, "Lac d'Annecy"  );
+insert into Theme values (4, "Chevalier"  );
 
 insert into Obstacle (id, nom, photo, commentaire,difficulte, prix, theme ) VALUES (1, 'puzzle',"image.jpg", "pjpjpjpjpjpjpjpj", 3,12,1 );
 insert into Obstacle (id, nom, photo, commentaire,difficulte, prix, theme ) VALUES (2, 'cadena numérique',"image.jpg", "pjpjpjpjpjpjpjpj", 5,35,2 );
 insert into Obstacle (id, nom, photo, commentaire,difficulte, prix, theme ) VALUES (3, 'rébus',"image.jpg", "pjpjpjpjpjpjpjpj", 1,5,3 );
 
-insert into Avis VALUES (1,1,5, "Super comme obstacle",1);
-insert into Avis VALUES (2,2,1, "nul nul nul",2);
-insert into Avis VALUES (3,1,3, "en sah, ça va",3);
+insert into Avis VALUES (1,1,5, "Super, les obstacles étaient génial ! Hâte de revenir au plus vite.",1);
+insert into Avis VALUES (2,2,1, "Peu attractif, les thèmes ne sont pas bien réalisés",2);
+insert into Avis VALUES (3,1,3, "En vrai, ça va",3);
 
 insert into Ville VALUES (1, "Annecy");
 insert into Ville VALUES (2, "Chamonix");
@@ -139,9 +155,18 @@ insert into Utilisateur values (1, "admin", 1, "...", "...");
 insert into Utilisateur values (2, "reposable", 2, "...", "...");
 insert into Utilisateur values (3, "client", 3, "...", "...");
 
+insert into Heure values (1,'2020-02-01 09:00:00');
+insert into Heure values (2,'2020-02-01 10:00:00');
+insert into Heure values (3,'2020-02-01 11:00:00');
+
 insert into Salle values (1,1,1);
-insert into Salle values (2,2,2);
-insert into Salle values (3,3,3);
+insert into Salle values (2,1,2);
+insert into Salle values (3,1,3);
+insert into Salle values (4,1,4);
+insert into Salle values (5,2,1);
+insert into Salle values (6,2,2);
+insert into Salle values (7,3,3);
+insert into Salle values (8,3,3);
 
 insert into Reservation values ("2020-06-06", 1, 1, 2, 30, 1, 5, 2);
 insert into Reservation values ("2020-10-10", 2, 3, 1, 45, 1, 8, 1);
@@ -171,3 +196,4 @@ select * from Reservation;
 select * from Transactions;
 select * from Placement_obstacle;
 select * from Date_ferie;
+select * from Heure;
