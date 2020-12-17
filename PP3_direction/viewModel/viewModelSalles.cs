@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using ModelLayer.Business;
 using ModelLayer.Data;
@@ -24,6 +25,7 @@ namespace PP3_direction.viewModel
         private DaoVille _thedaoville;
         private ICommand updateCommand;
         private ICommand barreCommande;
+        private ICommand suprimerHeure;
         private DaoHeure _thedaoheure;
         private ObservableCollection<Client> listClients; 
         private ObservableCollection<Avis> listAvis;
@@ -458,6 +460,27 @@ namespace PP3_direction.viewModel
                     this.barreCommande = new RelayCommand(() => Rechercher(), () => true);
                 }
                 return this.barreCommande;
+
+
+
+            }
+        }
+        private void SuprimerHeurelist()
+        {
+            this._thedaoheure.Delete(this.selectedHeure);
+            int a = listheure.IndexOf(selectedHeure);
+            listheure.RemoveAt(a);
+            MessageBox.Show("heure supprimé");
+        }
+        public ICommand SuprimerHeure
+        {
+            get
+            {
+                if (this.suprimerHeure == null)
+                {
+                    this.suprimerHeure = new RelayCommand(() => SuprimerHeurelist(), () => true);
+                }
+                return this.suprimerHeure;
 
 
 

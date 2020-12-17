@@ -95,7 +95,7 @@
             </Label>
             <Rectangle Fill="#00000000" Height="502" Margin="10,78,579,0" Stroke="Black" VerticalAlignment="Top" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
             <Button Canvas.ZIndex="8" FontSize="17" BorderThickness="2,2,2,2" Content="Ajouter" Margin="21,519,750,0" VerticalAlignment="Top" Height="36" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
-            <Button Panel.ZIndex="100" FontSize="17" BorderThickness="2,2,2,2" Content="Supprimer" Margin="178,519,596,0" VerticalAlignment="Top" Height="36" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
+            <Button Command="{Binding Suprimersalle}" Panel.ZIndex="100" FontSize="17" BorderThickness="2,2,2,2" Content="Supprimer" Margin="178,519,596,0" VerticalAlignment="Top" Height="36" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
             <ListBox  ItemsSource="{Binding Listsalle}" SelectedItem="{Binding Selectedsalles}" HorizontalAlignment="Left" Height="403" Margin="21,97,0,0" VerticalAlignment="Top" Width="274">
 
             </ListBox>
@@ -120,7 +120,7 @@
                     <Run Text="MODIFIÉ"/>
                 </Bold>
             </Label>
-            <Button Panel.ZIndex="100" FontSize="17" BorderThickness="2,2,2,2" Content="Supprimer" Margin="727,519,47,0" VerticalAlignment="Top" Height="36" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
+            <Button Command="{Binding SuprimerHeure}" Panel.ZIndex="100" FontSize="17" BorderThickness="2,2,2,2" Content="Supprimer" Margin="727,519,47,0" VerticalAlignment="Top" Height="36" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
             <Label Canvas.Left="328" Canvas.Top="211" RenderTransformOrigin="1.58,1.909" FontSize="15" Margin="360,110,481,445">
                 <Bold>Lieu :</Bold>
             </Label>
@@ -137,12 +137,14 @@
             <Rectangle Fill="#00000000" Height="70" Margin="595,224,263,0" Stroke="Black" VerticalAlignment="Top" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
             <Rectangle Panel.ZIndex="200" Fill="#FFD1D1D1" Height="54" Margin="597,207,265,0" Stroke="#FFD1D1D1" VerticalAlignment="Top" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
             <Button Content="➔" HorizontalAlignment="Left" Foreground="Black" Background="#FFD1D1D1" BorderBrush="Black" Margin="587,312,0,0" VerticalAlignment="Top" Width="50"/>
+            <Button Command="{Binding Ajouterheure}" Panel.ZIndex="8" FontSize="17" BorderThickness="2,2,2,2" Content="Ajouter" Margin="547,519,224,0" VerticalAlignment="Top" Height="36" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
+            <TextBox HorizontalAlignment="Left" Height="36" Margin="360,519,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182"/>
         </Grid>
 
 
 
 
-        <Grid x:Name="grid3"   HorizontalAlignment="Left" Height="590" Margin="3,0,0,0" VerticalAlignment="Top" Width="885" Background="#FFD1D1D1" Grid.Column="1">
+         <Grid x:Name="grid3"   HorizontalAlignment="Left" Height="590" Margin="3,0,0,0" VerticalAlignment="Top" Width="885" Background="#FFD1D1D1" Grid.Column="1">
             <Label  Foreground="#FF2017D4" FontSize="30" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Height="63" Width="145">
                 <Bold>Avis
                 </Bold>

@@ -42,7 +42,7 @@ namespace ModelLayer.Data
         //{
         //    string query = "Heure (id, heure) VALUES ("
         //        + uneheure.Id + ",'"
-        //        + uneheure.Heuree("'", "''");
+        //        + uneheure.Heure("'", "''");
         //    this.mydbal.Insert(query);
         //}
 
@@ -54,11 +54,13 @@ namespace ModelLayer.Data
         //    this.mydbal.Update(query);
         //}
 
-        //public void Delete(Heure uneheure)
-        //{
-        //    string query = "Ville Where id = " + uneVille.Id;
-        //    this.mydbal.Delete(query);
-        //}
+        public void Delete(Heure uneheure)
+        {
+            string query = " Heure Where id = " + uneheure.Id;
+            this.mydbal.Delete(query);
+        }
+
+
 
         //public List<Ville> SelectAll()
         //{
