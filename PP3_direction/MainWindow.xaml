@@ -62,9 +62,11 @@
                     </ListViewItem>
                 </ListView>
             </StackPanel>
+            <materialDesign:PackIcon Foreground="white" Kind="Power" Width="49" Panel.ZIndex="100" Height="29" FontSize="25" VerticalAlignment="center" Margin="65,547,0,24"/>
+            <Button Foreground="#FF112D8D" Background="#FF112D8D" HorizontalAlignment="Left" Margin="65,544,0,0" VerticalAlignment="Top" Width="49" BorderBrush="#FF112D8D" Click="Button_Click"/>
         </Grid>
 
-         <Grid Grid.Column="1" x:Name="HOME">
+        <Grid Grid.Column="1" x:Name="HOME">
             <Label FontWeight="Bold"  HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="70" Foreground="#FF2017D4">
                 Logiciel Directeur</Label>
         </Grid>
@@ -78,14 +80,6 @@
             <Label  HorizontalAlignment="Center" Margin="34,65,579,0" VerticalAlignment="Top" Height="29" Width="280" FontSize="18" Background="#FFD1D1D1" >
                 <Bold>Statistiques (salles, avis, clients)</Bold>
             </Label>
-            <Image HorizontalAlignment="Left" Height="226" Margin="118,112,0,0" VerticalAlignment="Top" Width="246" Source="https://lbretagnett.com/wp-content/uploads/2017/10/t%C3%A9l%C3%A9chargement-2.jpg"/>
-            <Image HorizontalAlignment="Left" Height="198" Margin="580,124,0,0" VerticalAlignment="Top" Width="238" Source="https://lbretagnett.com/wp-content/uploads/2017/10/t%C3%A9l%C3%A9chargement-2.jpg"/>
-            <Image HorizontalAlignment="Left" Height="119" Margin="217,374,0,0" VerticalAlignment="Top" Width="131" Source="https://lbretagnett.com/wp-content/uploads/2017/10/t%C3%A9l%C3%A9chargement-2.jpg"/>
-            <Image HorizontalAlignment="Left" Height="119" Margin="485,374,0,0" VerticalAlignment="Top" Width="130" Source="https://lbretagnett.com/wp-content/uploads/2017/10/t%C3%A9l%C3%A9chargement-2.jpg"/>
-            <Label Content="Statistique" HorizontalAlignment="Left" Margin="202,338,0,0" VerticalAlignment="Top"/>
-            <Label Content="Statistique" HorizontalAlignment="Left" Margin="665,327,0,0" VerticalAlignment="Top"/>
-            <Label Content="Statistique" HorizontalAlignment="Left" Margin="247,498,0,0" VerticalAlignment="Top"/>
-            <Label Content="Statistique" HorizontalAlignment="Left" Margin="515,493,0,0" VerticalAlignment="Top"/>
 
         </Grid>
 
@@ -124,27 +118,27 @@
             <Label Canvas.Left="328" Canvas.Top="211" RenderTransformOrigin="1.58,1.909" FontSize="15" Margin="360,110,481,445">
                 <Bold>Lieu :</Bold>
             </Label>
-            <TextBlock Panel.ZIndex="300" HorizontalAlignment="Left" Margin="410,110,0,0" TextWrapping="Wrap" Text="{Binding Nomville}" VerticalAlignment="Top" Height="28" Width="105"/>
+            <TextBlock Panel.ZIndex="300" HorizontalAlignment="Left" Margin="410,117,0,0" TextWrapping="Wrap" Text="{Binding Nomville}" VerticalAlignment="Top" Height="28" Width="105"/>
             <Label RenderTransformOrigin="1.58,1.909" FontSize="15" Margin="547,110,279,445">
                 <Bold>
                     <Run Text="Thème :"/>
                 </Bold>
             </Label>
-            <TextBlock Panel.ZIndex="100" HorizontalAlignment="Left" Margin="612,110,0,0" TextWrapping="Wrap" Text="{Binding Theme}" VerticalAlignment="Top" Height="28" Width="105"/>
+            <TextBlock Panel.ZIndex="100" HorizontalAlignment="Left" Margin="612,117,0,0" TextWrapping="Wrap" Text="{Binding Theme}" VerticalAlignment="Top" Height="28" Width="105"/>
             <Rectangle Fill="#FFD1D1D1" Height="130" Margin="566,266,249,0" Stroke="#FFD1D1D1" VerticalAlignment="Top" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
             <Rectangle Panel.ZIndex="200" Fill="#FFD1D1D1" Height="54" Margin="597,396,265,0" Stroke="#FFD1D1D1" VerticalAlignment="Top" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
             <Rectangle Fill="#00000000" Height="70" Margin="595,360,263,0" Stroke="Black" VerticalAlignment="Top" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
             <Rectangle Fill="#00000000" Height="70" Margin="595,224,263,0" Stroke="Black" VerticalAlignment="Top" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
             <Rectangle Panel.ZIndex="200" Fill="#FFD1D1D1" Height="54" Margin="597,207,265,0" Stroke="#FFD1D1D1" VerticalAlignment="Top" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
-            <Button Content="➔" HorizontalAlignment="Left" Foreground="Black" Background="#FFD1D1D1" BorderBrush="Black" Margin="587,312,0,0" VerticalAlignment="Top" Width="50"/>
-            <Button Command="{Binding Ajouterheure}" Panel.ZIndex="8" FontSize="17" BorderThickness="2,2,2,2" Content="Ajouter" Margin="547,519,224,0" VerticalAlignment="Top" Height="36" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
-            <TextBox HorizontalAlignment="Left" Height="36" Margin="360,519,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182"/>
+            <Button Content="➔" HorizontalAlignment="Left" Foreground="Black" Background="#FFD1D1D1" BorderBrush="Black" Margin="587,312,0,0" VerticalAlignment="Top" Width="50" Command="{Binding decaleruneheure}"/>
+            <Button Command="{Binding ajouterheures}" Panel.ZIndex="8" FontSize="17" BorderThickness="2,2,2,2" Content="Ajouter" Margin="547,519,224,0" VerticalAlignment="Top" Height="36" Background="{DynamicResource {x:Static SystemColors.HotTrackBrushKey}}" BorderBrush="White"/>
+            <TextBox Text="{Binding Heure, Mode=TwoWay}" HorizontalAlignment="Left" Height="36" Margin="360,519,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182"/>
         </Grid>
 
 
 
 
-         <Grid x:Name="grid3"   HorizontalAlignment="Left" Height="590" Margin="3,0,0,0" VerticalAlignment="Top" Width="885" Background="#FFD1D1D1" Grid.Column="1">
+        <Grid x:Name="grid3"   HorizontalAlignment="Left" Height="590" Margin="3,0,0,0" VerticalAlignment="Top" Width="885" Background="#FFD1D1D1" Grid.Column="1">
             <Label  Foreground="#FF2017D4" FontSize="30" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Height="63" Width="145">
                 <Bold>Avis
                 </Bold>
@@ -197,7 +191,6 @@
             <TextBlock Text="{Binding NomClient}" HorizontalAlignment="Left" Margin="380,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFD1D1D1" Height="25"/>
             <TextBlock Text="{Binding PrenomClient}" HorizontalAlignment="Left" Margin="400,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="86" Background="#FFD1D1D1" Height="25"/>
             <TextBlock Text="{Binding AdressClient}" HorizontalAlignment="Left" Margin="455,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258" Background="#FFD1D1D1" Height="25"/>
-            <TextBlock HorizontalAlignment="Left" Margin="455,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Background="#FFCAE2FF" Height="25"/>
             <TextBlock Text="{Binding TelClient}" HorizontalAlignment="Left" Margin="418,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Background="#FFD1D1D1" Height="25"/>
             <TextBlock Text="{Binding DDNClient}" HorizontalAlignment="Left" Margin="479,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Background="#FFD1D1D1" Height="25"/>
         </Grid>

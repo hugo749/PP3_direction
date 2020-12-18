@@ -26,8 +26,12 @@ namespace PP3_direction.viewModel
         private ICommand updateCommand;
         private ICommand barreCommande;
         private ICommand suprimerHeure;
+        private ICommand suprimerSalle;
+        private ICommand Ajouterdansliste;
+        private ICommand decaleruneheure;
+        private ICommand Ajouterheure;
         private DaoHeure _thedaoheure;
-        private ObservableCollection<Client> listClients; 
+        private ObservableCollection<Client> listClients;
         private ObservableCollection<Avis> listAvis;
         private ObservableCollection<Obstacle> listObstacles;
         private ObservableCollection<Placement_Obstacle> listPlacement;
@@ -47,9 +51,10 @@ namespace PP3_direction.viewModel
         private Ville selectedVille = new Ville();
 
         public string Recherche { get; set; }
+        public string Heure { get; set; }
 
         //déclaration des listes...à compléter avec les fromages
-        
+
         public ObservableCollection<Avis> ListAvis { get => listAvis; set => listAvis = value; }
         public ObservableCollection<Client> ListClients { get => listClients; set => listClients = value; }
         public ObservableCollection<Obstacle> ListObstacles { get => listObstacles; set => listObstacles = value; }
@@ -133,7 +138,7 @@ namespace PP3_direction.viewModel
                 }
 
             }
-                set
+            set
             {
                 if (Selectedclient.Nom != value)
                 {
@@ -176,7 +181,7 @@ namespace PP3_direction.viewModel
             get => Selectedavis.Commentaire;
             set
             {
-                if (Selectedavis.Commentaire !=  value)
+                if (Selectedavis.Commentaire != value)
                 {
                     selectesAvis.Commentaire = value;
                     OnPropertyChanged("");
@@ -184,7 +189,7 @@ namespace PP3_direction.viewModel
             }
         }
 
-       public Avis Selectedavis
+        public Avis Selectedavis
         {
             get => selectesAvis;
             set
@@ -235,9 +240,9 @@ namespace PP3_direction.viewModel
         //----------------------//
 
 
-        
 
-        public Salle Selectedsalle
+
+        public Salle Selectedsalles
         {
             get => selectedSalle;
             set
@@ -248,6 +253,7 @@ namespace PP3_direction.viewModel
 
                     OnPropertyChanged("Theme");
                     OnPropertyChanged("Nomville");
+                    //OnPropertyChanged("Selectedsalle");
 
 
                 }
@@ -280,10 +286,10 @@ namespace PP3_direction.viewModel
 
                     selectedHeure = value;
 
-                   
+
 
                     OnPropertyChanged("Listheure");
-                    
+
 
                 }
             }
@@ -308,9 +314,9 @@ namespace PP3_direction.viewModel
         {
             get
             {
-                if (selectedSalle.IdLieu != null)
+                if (selectedSalle.IdTheme != null)
                 {
-                    return selectedSalle.IdLieu.Nom;
+                    return selectedSalle.IdTheme.Nom;
                 }
                 else
                 {
@@ -324,12 +330,12 @@ namespace PP3_direction.viewModel
                     selectedSalle.IdTheme.Nom = value;
                     OnPropertyChanged("Theme");
                 }
-            } 
+            }
         }
 
         public string Nomville
         {
-            get 
+            get
             {
                 if (selectedSalle.IdLieu != null)
                 {
@@ -379,8 +385,8 @@ namespace PP3_direction.viewModel
             listPlacement = new ObservableCollection<Placement_Obstacle>(thedaoplacement.SelectAll());
             listreservation = new ObservableCollection<Reservation>(theDaoReservation.SelectAll());
             listsalle = new ObservableCollection<Salle>(thedaosalles.SelectAll());
-            listtheme = new ObservableCollection<Theme> (thedaotheme.SelectAll());
-            listutilisateur = new ObservableCollection<Utilisateur> (thedaoutilisateurs.SelectAll());
+            listtheme = new ObservableCollection<Theme>(thedaotheme.SelectAll());
+            listutilisateur = new ObservableCollection<Utilisateur>(thedaoutilisateurs.SelectAll());
             listville = new ObservableCollection<Ville>(thedaoville.SelectAll());
             listheure = new ObservableCollection<Heure>(thedaoheure.SelectAll());
 
@@ -440,7 +446,7 @@ namespace PP3_direction.viewModel
         {
             if (this.Recherche != "")
             {
-                List<Client> listClienIndep = new List<Client>(_thedaoclients.SearchbyName("Clients","Nom Like '" + this.Recherche + "' or Prenom like '" + this.Recherche + "'"));
+                List<Client> listClienIndep = new List<Client>(_thedaoclients.SearchbyName("Clients", "Nom Like '" + this.Recherche + "' or Prenom like '" + this.Recherche + "'"));
                 ListClients.Clear();
                 foreach (Client c in listClienIndep)
                 {
@@ -449,6 +455,57 @@ namespace PP3_direction.viewModel
             }
             else RefreshListCli();
         }
+
+
+
+
+
+
+
+
+        private void Heurees()
+        {
+            
+            
+                List<Heure> Listheure = new List<Heure>();
+
+                foreach (Heure c in Listheure)
+                {
+                    Listheure.Add(c);
+                }
+            
+
+        }
+
+
+
+        public ICommand ajouterheures
+        {
+            get
+            {
+                if (this.decaleruneheure == null)
+                {
+                    this.decaleruneheure = new RelayCommand(() => Heurees(), () => true);
+                }
+                return this.decaleruneheure;
+
+
+
+            }
+        }
+
+
+       
+
+
+
+
+
+
+
+
+
+
 
 
         public ICommand BarreCommande
@@ -470,7 +527,7 @@ namespace PP3_direction.viewModel
             this._thedaoheure.Delete(this.selectedHeure);
             int a = listheure.IndexOf(selectedHeure);
             listheure.RemoveAt(a);
-            MessageBox.Show("heure supprimé");
+            MessageBox.Show("Heure supprimé !");
         }
         public ICommand SuprimerHeure
         {
@@ -487,17 +544,62 @@ namespace PP3_direction.viewModel
             }
         }
 
+        //private void Ajouteruneheurealamain()
+        //{
 
-        public void RefreshListCli()
+        //}
+
+
+
+        private void Suprimersallelist()
         {
-            ObservableCollection<Client> lalistClient = new ObservableCollection<Client>(_thedaoclients.SelectAll());
-            listClients.Clear();
-            foreach (Client c in lalistClient)
+            if (Selectedsalles != null)
             {
-                listClients.Add(c);
+                Salle lessalles = new Salle();
+                List<Salle> lesalles = new List<Salle>();
+                lessalles = Selectedsalles;
+                _thedaosalles.Delete(lessalles);
+                lesalles = _thedaosalles.SelectAll();
+                Listsalle.Clear();
+                foreach (Salle item in lesalles)
+                {
+                    Listsalle.Add(item);
+                }
+                this._thedaosalles.Delete(this.selectedSalle);
+                int a = listsalle.IndexOf(selectedSalle);
+                listsalle.Remove(selectedSalle);
+                MessageBox.Show("Salle supprimé !");
+            }
+
+        }
+        public ICommand Suprimersalle
+        {
+            get
+            {
+                if (this.suprimerSalle == null)
+                {
+                    this.suprimerSalle = new RelayCommand(() => Suprimersallelist(), () => true);
+                }
+                return this.suprimerSalle;
+
+
+
             }
         }
 
 
-    }
-}
+
+                public void RefreshListCli()
+                {
+                    ObservableCollection<Client> lalistClient = new ObservableCollection<Client>(_thedaoclients.SelectAll());
+                    listClients.Clear();
+                    foreach (Client c in lalistClient)
+                    {
+                        listClients.Add(c);
+                    }
+                }
+
+
+            }
+        }
+    

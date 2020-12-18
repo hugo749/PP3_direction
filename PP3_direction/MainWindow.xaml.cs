@@ -24,16 +24,16 @@ namespace PP3_direction
     /// </summary>
     public partial class directeur : Window
     {
-        public directeur(DaoAvis thedaoavis, DaoClient thedaoclient, DaoObstacle thedaoobstacle, DaoPlacement_Obst thedaoPlacement_Obst, DaoReservation theDaoReservation, DaoSalle thedaosalle, DaoTheme thedaotheme,DaoUtilisateur thedaoutilisateur,DaoVille thedaoville, DaoHeure thedaoheure )
+        public directeur(DaoAvis thedaoavis, DaoClient thedaoclient, DaoObstacle thedaoobstacle, DaoPlacement_Obst thedaoPlacement_Obst, DaoReservation theDaoReservation, DaoSalle thedaosalle, DaoTheme thedaotheme, DaoUtilisateur thedaoutilisateur, DaoVille thedaoville, DaoHeure thedaoheure)
         {
             InitializeComponent();
-            Globale.DataContext = new viewModel.viewModelSalles(thedaoavis, thedaoclient ,thedaoobstacle, thedaoPlacement_Obst, theDaoReservation, thedaosalle,thedaotheme,thedaoutilisateur,thedaoville, thedaoheure);
+            Globale.DataContext = new viewModel.viewModelSalles(thedaoavis, thedaoclient, thedaoobstacle, thedaoPlacement_Obst, theDaoReservation, thedaosalle, thedaotheme, thedaoutilisateur, thedaoville, thedaoheure);
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
-            
+
             HOME.Visibility = Visibility.Visible;
-            
+
         }
 
         private void ButtonPOPUPlog_Click(object sender, RoutedEventArgs e)
@@ -46,9 +46,9 @@ namespace PP3_direction
             grid1.Visibility = Visibility.Visible;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
-            
+
             HOME.Visibility = Visibility.Hidden;
-            
+
         }
 
         private void ListViewItem_Selected_1(object sender, RoutedEventArgs e)
@@ -56,9 +56,9 @@ namespace PP3_direction
             grid2.Visibility = Visibility.Visible;
             grid1.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
-            
+
             HOME.Visibility = Visibility.Hidden;
-            
+
         }
 
         private void ListViewItem_Selected_2(object sender, RoutedEventArgs e)
@@ -66,22 +66,22 @@ namespace PP3_direction
             grid3.Visibility = Visibility.Visible;
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
-            
+
             HOME.Visibility = Visibility.Hidden;
-            
+
         }
 
         private void ListViewItem_Selected_3(object sender, RoutedEventArgs e)
         {
-            
+
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
             HOME.Visibility = Visibility.Hidden;
-            
+
         }
 
-        
+
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -91,15 +91,18 @@ namespace PP3_direction
 
         private void ListViewItem_Selected_4(object sender, RoutedEventArgs e)
         {
-           
+
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
             HOME.Visibility = Visibility.Hidden;
-            
+
         }
 
-       
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 
 }

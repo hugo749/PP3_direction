@@ -38,13 +38,13 @@ namespace ModelLayer.Data
             return listheure;
         }
 
-        //public void Insert(Heure uneheure)
-        //{
-        //    string query = "Heure (id, heure) VALUES ("
-        //        + uneheure.Id + ",'"
-        //        + uneheure.Heure("'", "''");
-        //    this.mydbal.Insert(query);
-        //}
+        public void Insert(Heure uneheure)
+        {
+            string query = "Heure (id, heure) VALUES ("
+                + uneheure.Id + ",'"
+                + uneheure.Heuree + ")";
+            this.mydbal.Insert(query);
+        }
 
         //public void Update(Heure uneheure)
         //{
