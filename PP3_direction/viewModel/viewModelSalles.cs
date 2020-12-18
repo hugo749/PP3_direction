@@ -28,6 +28,8 @@ namespace PP3_direction.viewModel
         private ICommand suprimerHeure;
         private ICommand suprimerSalle;
         private ICommand Ajouterdansliste;
+        private ICommand suprimerSalle;
+        private ICommand Ajouterdansliste;
         private ICommand decaleruneheure;
         private ICommand Ajouterheure;
         private DaoHeure _thedaoheure;
@@ -241,6 +243,7 @@ namespace PP3_direction.viewModel
 
 
 
+        public Salle Selectedsalles
 
         public Salle Selectedsalles
         {
@@ -547,6 +550,45 @@ namespace PP3_direction.viewModel
         //private void Ajouteruneheurealamain()
         //{
 
+        private void Suprimersallelist()
+        {
+            if (Selectedsalles != null)
+            {
+                Salle lessalles = new Salle();
+                List<Salle> lesalles = new List<Salle>();
+                lessalles = Selectedsalles;
+                _thedaosalles.Delete(lessalles);
+                lesalles = _thedaosalles.SelectAll();
+                Listsalle.Clear();
+                foreach (Salle item in lesalles)
+                {
+                    Listsalle.Add(item);
+                }
+                //this._thedaosalles.Delete(this.selectedSalle);
+                ////int a = listsalle.IndexOf(selectedSalle);
+                //listsalle.Remove(selectedSalle);
+                MessageBox.Show("Salle supprimé !");
+            }
+
+        }
+        public ICommand Suprimersalle
+        {
+            get
+            {
+                if (this.suprimerSalle == null)
+                {
+                    this.suprimerSalle = new RelayCommand(() => Suprimersallelist(), () => true);
+                }
+                return this.suprimerSalle;
+
+
+
+            }
+        }
+
+
+
+        public void RefreshListCli()
         //}
 
 

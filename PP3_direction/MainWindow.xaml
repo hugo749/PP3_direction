@@ -59,7 +59,7 @@
                                 Avis
                             </TextBlock>
                         </StackPanel>
-                    </ListViewItem>
+                    </ListViewItem> 
                 </ListView>
             </StackPanel>
             <materialDesign:PackIcon Foreground="white" Kind="Power" Width="49" Panel.ZIndex="100" Height="29" FontSize="25" VerticalAlignment="center" Margin="65,547,0,24"/>
