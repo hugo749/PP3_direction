@@ -26,6 +26,8 @@ namespace PP3_direction.viewModel
         private ICommand updateCommand;
         private ICommand barreCommande;
         private ICommand suprimerHeure;
+        private ICommand suprimerSalle;
+        private ICommand Ajouterdansliste;
         private DaoHeure _thedaoheure;
         private ObservableCollection<Client> listClients; 
         private ObservableCollection<Avis> listAvis;
@@ -237,7 +239,7 @@ namespace PP3_direction.viewModel
 
         
 
-        public Salle Selectedsalle
+        public Salle Selectedsalles
         {
             get => selectedSalle;
             set
@@ -248,6 +250,7 @@ namespace PP3_direction.viewModel
 
                     OnPropertyChanged("Theme");
                     OnPropertyChanged("Nomville");
+                    //OnPropertyChanged("Selectedsalle");
 
 
                 }
@@ -308,9 +311,9 @@ namespace PP3_direction.viewModel
         {
             get
             {
-                if (selectedSalle.IdLieu != null)
+                if (selectedSalle.IdTheme != null)
                 {
-                    return selectedSalle.IdLieu.Nom;
+                    return selectedSalle.IdTheme.Nom;
                 }
                 else
                 {
@@ -470,7 +473,7 @@ namespace PP3_direction.viewModel
             this._thedaoheure.Delete(this.selectedHeure);
             int a = listheure.IndexOf(selectedHeure);
             listheure.RemoveAt(a);
-            MessageBox.Show("heure supprimé");
+            MessageBox.Show("Heure supprimé !");
         }
         public ICommand SuprimerHeure
         {
@@ -486,6 +489,44 @@ namespace PP3_direction.viewModel
 
             }
         }
+
+
+        private void Suprimersallelist()
+        {
+            if (Selectedsalles != null)
+            {
+                Salle lessalles = new Salle();
+                List<Salle> lesalles = new List<Salle>();
+                lessalles = Selectedsalles;
+                _thedaosalles.Delete(lessalles);
+                lesalles = _thedaosalles.SelectAll();
+                Listsalle.Clear();
+                foreach (Salle item in lesalles)
+                {
+                    Listsalle.Add(item);
+                }
+                //this._thedaosalles.Delete(this.selectedSalle);
+                ////int a = listsalle.IndexOf(selectedSalle);
+                //listsalle.Remove(selectedSalle);
+                MessageBox.Show("Salle supprimé !");
+            }
+
+        }
+        public ICommand Suprimersalle
+        {
+            get
+            {
+                if (this.suprimerSalle == null)
+                {
+                    this.suprimerSalle = new RelayCommand(() => Suprimersallelist(), () => true);
+                }
+                return this.suprimerSalle;
+
+
+
+            }
+        }
+
 
 
         public void RefreshListCli()
