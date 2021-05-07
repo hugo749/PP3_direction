@@ -31,7 +31,7 @@ namespace PP3_direction
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
-
+            grid4.Visibility = Visibility.Hidden;
             HOME.Visibility = Visibility.Visible;
 
         }
@@ -46,7 +46,7 @@ namespace PP3_direction
             grid1.Visibility = Visibility.Visible;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
-
+            grid4.Visibility = Visibility.Hidden;
             HOME.Visibility = Visibility.Hidden;
 
         }
@@ -56,7 +56,7 @@ namespace PP3_direction
             grid2.Visibility = Visibility.Visible;
             grid1.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
-
+            grid4.Visibility = Visibility.Hidden;
             HOME.Visibility = Visibility.Hidden;
 
         }
@@ -66,7 +66,7 @@ namespace PP3_direction
             grid3.Visibility = Visibility.Visible;
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
-
+            grid4.Visibility = Visibility.Hidden;
             HOME.Visibility = Visibility.Hidden;
 
         }
@@ -77,6 +77,7 @@ namespace PP3_direction
             grid1.Visibility = Visibility.Hidden;
             grid2.Visibility = Visibility.Hidden;
             grid3.Visibility = Visibility.Hidden;
+            grid4.Visibility = Visibility.Visible;
             HOME.Visibility = Visibility.Hidden;
 
         }
@@ -89,15 +90,7 @@ namespace PP3_direction
             fenetre.ShowDialog();
         }
 
-        private void ListViewItem_Selected_4(object sender, RoutedEventArgs e)
-        {
-
-            grid1.Visibility = Visibility.Hidden;
-            grid2.Visibility = Visibility.Hidden;
-            grid3.Visibility = Visibility.Hidden;
-            HOME.Visibility = Visibility.Hidden;
-
-        }
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

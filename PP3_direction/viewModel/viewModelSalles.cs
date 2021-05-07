@@ -28,10 +28,10 @@ namespace PP3_direction.viewModel
         private ICommand suprimerHeure;
         private ICommand suprimerSalle;
         private ICommand Ajouterdansliste;
-        private ICommand suprimerSalle;
-        private ICommand Ajouterdansliste;
+
         private ICommand decaleruneheure;
         private ICommand Ajouterheure;
+
         private DaoHeure _thedaoheure;
         private ObservableCollection<Client> listClients;
         private ObservableCollection<Avis> listAvis;
@@ -243,7 +243,6 @@ namespace PP3_direction.viewModel
 
 
 
-        public Salle Selectedsalles
 
         public Salle Selectedsalles
         {
@@ -262,6 +261,92 @@ namespace PP3_direction.viewModel
                 }
             }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        //------------------------//
+       //   Fenêtre Obstacles    //
+      //------------------------//
+
+
+
+        public Ville Selectesvilles
+        {
+            get => selectedVille;
+            set
+            {
+                if (selectedVille != value)
+                {
+                    selectedVille = value;
+                    OnPropertyChanged("Listville");
+                }
+            }
+        }
+
+        public string nom
+        {
+            get => Selectesvilles.Nom;
+            set
+            {
+                if (Selectesvilles.Nom != value)
+                {
+                    Selectesvilles.Nom = value;
+                    OnPropertyChanged("Listville");
+                }
+            }
+        }
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -326,7 +411,7 @@ namespace PP3_direction.viewModel
                     return null;
                 }
             }
-            set
+            set 
             {
                 if (selectedSalle.IdTheme.Nom != value)
                 {
@@ -456,7 +541,7 @@ namespace PP3_direction.viewModel
                     ListClients.Add(c);
                 }
             }
-            else RefreshListCli();
+            //else RefreshListCli();
         }
 
 
@@ -550,7 +635,12 @@ namespace PP3_direction.viewModel
         //private void Ajouteruneheurealamain()
         //{
 
+        //}
+
+
+
         private void Suprimersallelist()
+
         {
             if (Selectedsalles != null)
             {
@@ -589,11 +679,7 @@ namespace PP3_direction.viewModel
 
 
         public void RefreshListCli()
-        //}
 
-
-
-        private void Suprimersallelist()
         {
             if (Selectedsalles != null)
             {
@@ -614,32 +700,32 @@ namespace PP3_direction.viewModel
             }
 
         }
-        public ICommand Suprimersalle
-        {
-            get
-            {
-                if (this.suprimerSalle == null)
-                {
-                    this.suprimerSalle = new RelayCommand(() => Suprimersallelist(), () => true);
-                }
-                return this.suprimerSalle;
+        //public ICommand Suprimersalle
+        //{
+        //    get
+        //    {
+        //        if (this.suprimerSalle == null)
+        //        {
+        //            this.suprimerSalle = new RelayCommand(() => Suprimersallelist(), () => true);
+        //        }
+        //        return this.suprimerSalle;
 
 
 
-            }
-        }
+        //    }
+        //}
 
 
 
-                public void RefreshListCli()
-                {
-                    ObservableCollection<Client> lalistClient = new ObservableCollection<Client>(_thedaoclients.SelectAll());
-                    listClients.Clear();
-                    foreach (Client c in lalistClient)
-                    {
-                        listClients.Add(c);
-                    }
-                }
+                //public void RefreshListCli()
+                //{
+                //    ObservableCollection<Client> lalistClient = new ObservableCollection<Client>(_thedaoclients.SelectAll());
+                //    listClients.Clear();
+                //    foreach (Client c in lalistClient)
+                //    {
+                //        listClients.Add(c);
+                //    }
+                //}
 
 
             }

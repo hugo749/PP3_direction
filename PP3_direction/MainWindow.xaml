@@ -59,7 +59,15 @@
                                 Avis
                             </TextBlock>
                         </StackPanel>
-                    </ListViewItem> 
+                    </ListViewItem>
+                    <ListViewItem Height="60" Selected="ListViewItem_Selected_3">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Foreground="white" Kind="Build" Width="25" Height="25" FontSize="25" VerticalAlignment="center"/>
+                            <TextBlock FontSize="20" VerticalAlignment="Center" Margin="20 10" Foreground="White" FontFamily="Century Gothic">
+                                Obstacles
+                            </TextBlock>
+                        </StackPanel>
+                    </ListViewItem>
                 </ListView>
             </StackPanel>
             <materialDesign:PackIcon Foreground="white" Kind="Power" Width="49" Panel.ZIndex="100" Height="29" FontSize="25" VerticalAlignment="center" Margin="65,547,0,24"/>
@@ -193,6 +201,31 @@
             <TextBlock Text="{Binding AdressClient}" HorizontalAlignment="Left" Margin="455,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="258" Background="#FFD1D1D1" Height="25"/>
             <TextBlock Text="{Binding TelClient}" HorizontalAlignment="Left" Margin="418,249,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Background="#FFD1D1D1" Height="25"/>
             <TextBlock Text="{Binding DDNClient}" HorizontalAlignment="Left" Margin="479,281,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" Background="#FFD1D1D1" Height="25"/>
+        </Grid>
+
+        <Grid x:Name="grid4" HorizontalAlignment="Left" Height="590" Margin="179,0,0,0" VerticalAlignment="Top" Width="891"  Background="#FFD1D1D1" Grid.ColumnSpan="2" >
+            <Label  Foreground="#FF2017D4" FontSize="30" HorizontalAlignment="Left" Margin="21,10,0,0" VerticalAlignment="Top" Height="63" Width="160">
+                <Bold>
+                    Obstacles
+                </Bold>
+            </Label>
+            <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="104" Margin="10,78,0,0" Stroke="Black" VerticalAlignment="Top" Width="871" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
+            <Label  HorizontalAlignment="Center" Margin="33,65,701,0" VerticalAlignment="Top" Height="29" Width="157" FontSize="18" Background="#FFD1D1D1" >
+                <Bold>Choix de la salle</Bold>
+            </Label>
+            <Label Content="Ville:" HorizontalAlignment="Left" Margin="50,120,0,0" VerticalAlignment="Top"/>
+            <Label Content="Salle:" HorizontalAlignment="Left" Margin="330,120,0,0" VerticalAlignment="Top"/>
+            <Label Content="Thèmes:" HorizontalAlignment="Left" Margin="633,120,0,0" VerticalAlignment="Top"/>
+            <ComboBox ItemsSource="{Binding Listville}" SelectedItem="{Binding Selectedvilles}" HorizontalAlignment="Left" Margin="87,120,0,0" VerticalAlignment="Top" Width="120"/>
+            <ComboBox ItemsSource="{Binding Listsalle}" SelectedItem="{Binding Selectedsalles}" HorizontalAlignment="Left" Margin="373,120,0,0" VerticalAlignment="Top" Width="120"/>
+            <Rectangle Fill="#00000000" HorizontalAlignment="Left" Height="388" Margin="10,202,0,0" Stroke="Black" VerticalAlignment="Top" Width="871" RadiusY="15" RadiusX="15" StrokeThickness="2"/>
+            <Label  HorizontalAlignment="Center" Margin="33,187,672,0" VerticalAlignment="Top" Height="29" Width="186" FontSize="18" Background="#FFD1D1D1" >
+                <Bold>Obstacles du thème</Bold>
+            </Label>
+            <ListBox HorizontalAlignment="Left" Height="359" Margin="33,221,0,0" VerticalAlignment="Top" Width="834"/>
+            <Label Content="➔" HorizontalAlignment="Left" Height="46" FontSize="40" Margin="251,103,0,0" VerticalAlignment="Top" Width="48"/>
+            <Label Content="➔" HorizontalAlignment="Left" Height="46" FontSize="40" Margin="548,105,0,0" VerticalAlignment="Top" Width="48"/>
+
         </Grid>
 
 
